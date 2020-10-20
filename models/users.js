@@ -1,3 +1,5 @@
+const { HostNotFoundError } = require("sequelize");
+
 module.exports = function (sequelize, DataTypes) {
     var Users = sequelize.define("Users", {
         first_name: {
@@ -19,10 +21,24 @@ module.exports = function (sequelize, DataTypes) {
 
         },
         phone: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false
 
         }
     });
+
+    Users.associate = function (models){
+
+        //Users.hasMany(models.jobs);
+        Users.belongsToMany(models.Jobs, {through: "UsersJobs"});
+
+    }
+
+/*     Users.beforeCreate(function(user){
+
+        user.password = bcrypt.hashSync(user.password, bcrypty.genSaltSync(10), null);
+
+    }); */
+
     return Users;
 };

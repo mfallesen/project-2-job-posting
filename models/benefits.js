@@ -3,11 +3,16 @@ module.exports = function (sequelize, DataTypes) {
         benefit_text: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-
-        job_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
-    ret
+
+    Benefits.associate = function (models){
+
+        //Managers.hasMany(models.jobs);
+        Benefits.belongsToMany(models.Jobs, {through: "BenefitsJobs"});
+    
+    }
+
+    return Benefits;
+};
+

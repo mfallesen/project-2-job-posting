@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Managers = sequelize.define("Managers", {
+    var Manager = sequelize.define("Manager", {
         first_name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -19,15 +19,32 @@ module.exports = function (sequelize, DataTypes) {
 
         },
         phone: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false
 
         },
         company_id: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false
 
         }
     });
-    return Managers;
+Manager.associate = function (models){
+
+    Manager.hasMany(models.Jobs,{
+       onDelete: "cascade" 
+    });
+
+    //Manager.belongsToMany(models.Job, {through: "ManagerJob"});
+
+}
+    return Manager;
 };
+
+
+
+/*     Managers.beforeCreate(function(manager){
+
+    manager.password = bcrypt.hashSync(manager.password, bcrypty.genSaltSync(10), null);
+
+}); */
