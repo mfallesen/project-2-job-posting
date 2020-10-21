@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Signup is on a modal: needs a button that gives it the JavaScript class is-active to the modal for it to pop up! -->
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Sign Up</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="First Name">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <p class="control is-expanded has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="Last Name">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      <div class="field is-horizontal">
+          <div class="field-label is-normal">
+              <label class="label">E-mail</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <p class="control is-expanded has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="E-mail address">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </p>
+            </div>
+          </div>
+        </div>
+
+      <div class="field is-horizontal">
+          <div class="field-label is-normal">
+              <label class="label">Phone</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <div class="field has-addons">
+                <p class="control">
+                  <a class="button is-static">
+                    +1
+                  </a>
+                </p>
+                <p class="control is-expanded">
+                  <input class="input" type="tel" placeholder="Your phone number">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Company</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" placeholder="Your company's name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+              <label class="label">Password</label>
+          </div>
+          <div class= "field-body">
+              <div class= "field is-expanded">
+                  <p class="control has-icons-left">
+                      <input class="input" type="password" placeholder="Enter a secure password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </p>
+              </div>
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-primary" class="submit">
+          Create Account
+        </button>
+      </footer>
+    </div>
+  </div>
+
+
+
+
+<script src="https://kit.fontawesome.com/0b49d94544.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>
