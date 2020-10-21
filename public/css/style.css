@@ -1,0 +1,35 @@
+.hero {
+    background-color: salmon;
+    background-image: url('../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    color:#000c20;
+}
+.navbar {
+    background-color: #97d9d9;
+
+}
+.title {
+    color:#000c20;
+}
+.subtitle {
+    color:#000c20;
+}
+.login-div {
+    background-color: #97d9d9;
+    color: #000c20;
+
+}
+.button {
+    background-color: #63a0b7;
+    color: white;
+}
+
+
+
+/* use this for media breakpoints */
+
+/* @media only screen and (max-width: 768px) {
+    
+  } */
