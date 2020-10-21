@@ -2,7 +2,9 @@ const db = require('../../models')
 const path = require('path')
 
 module.exports = function(router) {
+    // route to render user profile page
     router.get('/account/user/:id', function(req, res) {
+        // find user in db
         db.User.findOne({
             where: {id: req.params.id},
             include: [
@@ -11,9 +13,11 @@ module.exports = function(router) {
                 }
             ]
         }).then(function(dbUser) {
+            console.log(dbUser)
             // auto generated fields are also camel case here for some reason
             var {id, first_name, last_name, email, phone, createdAt, updatedAt} = dbUser
             
+            // create user obj with info to be used for render
             const user = {
                 id: id,
                 first_name: first_name,
@@ -24,7 +28,7 @@ module.exports = function(router) {
                 updated_at: updatedAt
             }
 
-            // empty array to hold list of jobs with only properties needed for generating page
+            // empty array to hold list of jobs with only properties needed for rendering page
             const jobsArr = []
             // iterate through each job found
             dbUser.Jobs.forEach(function(job) {
@@ -42,14 +46,19 @@ module.exports = function(router) {
                 // push new object to jobs array
                 jobsArr.push(jobObj)
             })
+
+            // temp json to show obj and array that will be used for rendering file
+            res.json({user: user, jobs: jobsArr})
             
-            res.render('user-profile', {
-                user: user,
-                jobs: jobsArr
-            })
+            // render page with user obj and jobs array
+            // res.render('user-profile', {
+            //     user: user,
+            //     jobs: jobsArr
+            // })
         })
     });
 
+    // route to display page for creating a new user
     router.get('/account/user/new', function(req, res) {
         res.sendFile(path.join(__dirname, '../../public/new-user.html'))
     });
