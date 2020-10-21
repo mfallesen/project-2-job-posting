@@ -22,8 +22,10 @@
     color: white;
 }
 
-@media only screen and (max-width: 768px) {
-    .login-div {
-      /* background-color: transparent; */
-    }
-  }
+
+
+/* use this for media breakpoints */
+
+/* @media only screen and (max-width: 768px) {
+    
+  } */
