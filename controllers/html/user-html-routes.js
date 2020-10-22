@@ -62,4 +62,28 @@ module.exports = function(router) {
     router.get('/account/user/new', function(req, res) {
         res.sendFile(path.join(__dirname, '../../public/new-user.html'))
     });
+
+    // route to display page for updating user profile info
+    router.get('/account/user/update/:id', function(req, res) {
+        db.User.findOne({
+            where: {id: req.params.id}
+        }).then(function(dbUser) {
+            // no user is found, send status code 404
+            if (!dbUser) {
+                return res.status(404).send('No user found').end();
+            }
+
+            // store values of user from query
+            const {id, first_name, last_name, email, phone} = dbUser;
+
+            // create new object with relevant data from query
+            const user = {id, first_name, last_name, email, phone}
+
+            // change res.json to a render when page is created
+            res.json(user)
+        }).catch(err => {
+            // if any other errors occur, status 500
+            res.status(500).end();
+        })
+    });
 }
