@@ -12,7 +12,5 @@ $(document).ready(function() {
         $(".modal").removeClass("is-active")
     })
 
-    $(".dropdown-trigger").on("click", function() {
-        $(".dropdown").addClass("is-active")
-    })
+    
 })
