@@ -24,7 +24,9 @@
     background-color: #63a0b7;
     color: white;
 }
-
+.modal-label {
+    color: white;
+}
 
 
 /* use this for media breakpoints */
