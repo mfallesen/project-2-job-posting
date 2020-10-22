@@ -191,4 +191,20 @@ module.exports = function (router) {
             res.status(422).end();
         })
     });
+
+    // route to display page for a specific job
+    router.get('/job/:id', function(req, res) {
+        // get job from db
+        db.Job.findOne({
+            where: {id: req.params.id}
+        }).then(function(dbJob) {
+            // if no job is found, status 404
+            if (!dbJob) {
+                return res.status(404).send('No job found').end();
+            }
+
+            // render job page with job object
+            res.render('jobpost', dbJob)
+        })
+    });
 }
