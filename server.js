@@ -14,13 +14,13 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+require('./controllers/html/login-html-routes')(app);
 require('./controllers/api/company-api-routes')(app);
 require('./controllers/api/job-api-routes')(app);
 require('./controllers/api/manager-api-routes')(app);
 require('./controllers/api/user-api-routes')(app);
 require('./controllers/html/company-html-routes')(app);
 require('./controllers/html/job-html-routes')(app);
-require('./controllers/html/login-html-routes')(app);
 require('./controllers/html/manager-html-routes')(app);
 require('./controllers/html/user-html-routes')(app);
 
