@@ -29,13 +29,50 @@
             </div>
         </nav>
 
-<div class="columns">
+<div class="container">
 
-    {{#each jobs}}
+    <div id="job-header">
+        <h1>Job Index</h1>
+
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Sort Jobs</span>
+                <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                <a href="/job/listings/date" class="dropdown-item">
+                    Recently Posted
+                 </a>
+                <a href="/job/listings/wage" class="dropdown-item">
+                    Wage
+                </a>
+                <a href="/job/listings/full-time" class="dropdown-item">
+                    Full-Time
+                </a>
+                <a href="/job/listings/part-time" class="dropdown-item">
+                    Part-Time
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="columns">
+
+        {{#each jobs}}
             {{> jobs/jobs}}
-    {{/each}}
+        {{/each}}
+
+    </div>
 
 </div>
+
 
 
 <footer class="footer">
