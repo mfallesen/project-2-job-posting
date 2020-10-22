@@ -102,14 +102,14 @@ module.exports = function (router) {
                 // modify jobs array to be more readable
                 const jobs = modifyJobArray(dbJobs)
 
-                // TODO: change res.son to render a page once page is created
-                res.status(200).json(jobs).end()
-            }).catch(function(err) {
+                // render jobs handlebars with jobs array
+                res.render('jobindex', {jobs: jobs})
+            }).catch(function (err) {
                 // if any other error occurs, send status code 500
-                return res.status(500).end();
+                return res.status(422).end();
             })
 
-        // if user wants to only get full/part time jobs, query all jobs and plug in condition for searching
+            // if user wants to only get full/part time jobs, query all jobs and plug in condition for searching
         } else if (req.params.filter === 'full-time' || req.params.filter === 'part-time') {
             db.Job.findAll({
                 include: {
@@ -126,14 +126,14 @@ module.exports = function (router) {
                 // modify jobs array to be more readable
                 const jobs = modifyJobArray(dbJobs)
 
-                // TODO: change res.son to render a page once page is created
-                res.status(200).json(jobs).end()
-            }).catch(function(err) {
+                // render jobs handlebars with jobs array
+                res.render('jobindex', { jobs: jobs })
+            }).catch(function (err) {
                 // if any other error occurs, send status code 500
-                return res.status(500).end();
+                return res.status(422).end();
             })
 
-        // if nothing is entered or random text is entered, query for all jobs to be displayed on page
+            // if nothing is entered or random text is entered, query for all jobs to be displayed on page
         } else {
             db.Job.findAll({
                 include: {
@@ -149,11 +149,11 @@ module.exports = function (router) {
                 // modify jobs array to be more readable
                 const jobs = modifyJobArray(dbJobs)
 
-                // TODO: change res.son to render a page once page is created
-                res.status(200).json(jobs).end()
-            }).catch(function(err) {
+                // render jobs handlebars with jobs array
+                res.render('jobindex', { jobs: jobs })
+            }).catch(function (err) {
                 // if any other error occurs, send status code 500
-                return res.status(500).end();
+                return res.status(422).end();
             })
         }
     });
@@ -165,21 +165,21 @@ module.exports = function (router) {
     });
 
     // route to render page for updating an existing job posting
-    router.get('/job/update/:id', function(req, res) {
+    router.get('/job/update/:id', function (req, res) {
         // grab job from database with id in url
         db.Job.findOne({
-            where: {id: req.params.id}
-        }).then(function(dbJob) {
+            where: { id: req.params.id }
+        }).then(function (dbJob) {
             // if id does not exist in jobs table, return status code 404
             if (!dbJob) {
                 return res.status(404).send('Job not found')
             }
 
             // store values from found job
-            const {id, title, description, type, wage} = dbJob
+            const { id, title, description, type, wage } = dbJob
 
             // create object to be used for rendering with values from job in db
-            const job = {id, title, description, type, wage}
+            const job = { id, title, description, type, wage }
 
             // send json of job for front-end until page is created
             res.json(job)
@@ -187,8 +187,8 @@ module.exports = function (router) {
             // TODO: change render to match file name when file is created
             // res.render('something')
         }).catch(err => {
-            // for any other errors send status code 500
-            res.status(500).end();
+            // for any other errors send status code 422
+            res.status(422).end();
         })
     });
 }
