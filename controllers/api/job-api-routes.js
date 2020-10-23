@@ -12,7 +12,6 @@ module.exports = function(router) {
             description: description,
             type: type,
             wage: wage,
-            // not entierly sure why this is using camelcase
             manager_id: manager_id
         }).then(function(newJob) {
             res.json(newJob)
