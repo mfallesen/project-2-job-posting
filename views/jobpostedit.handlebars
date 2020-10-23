@@ -49,7 +49,7 @@
     <div class="field">
         <label class="label is-medium">Job Title:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-medium" type="email" placeholder="Job Title">
+            <input class="input is-medium" type="email" placeholder= "Job Title" value={{title}}>
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope fa-xs"></i>
             </span>
@@ -62,7 +62,7 @@
     <div class="field">
         <label class="label is-medium">Company:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-medium" type="email" placeholder="Company">
+            <input class="input is-medium" type="email" placeholder="Company" value= {{company.company_name}}>
             <span class="icon is-left">
                 <i class="fas fa-envelope fa-sm"></i>
             </span>
@@ -72,20 +72,10 @@
         </div>
     </div>
 
-    
-    <div class="field">
-        <label class="label">Job Description:</label>
-        <div class="control">
-            <textarea class="textarea" placeholder="Textarea"></textarea>
-        </div>
-    </div>
-
-
-
     <div class="field">
         <label class="label is-medium">Contact Phone:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-medium" type="email" placeholder="Normal">
+            <input class="input is-medium" type="email" placeholder="Phone Number" value={{company.phone}}>
             <span class="icon is-medium is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -95,18 +85,33 @@
         </div>
     </div>
 
-  <div class="dropdown">
-    <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>Job Type</span>
-        <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-        </button>
+    
+    <div class="field">
+        <label class="label">Job Description:</label>
+        <div class="control">
+            <textarea class="textarea" placeholder="Textarea" value= {{description}}></textarea>
+        </div>
     </div>
+
+    <div class="field">
+        <label class="label is-medium">Job Type:</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-medium" type="email" placeholder="Type of Job" value={{type}}>
+        </div>
+    </div>
+
+<div class="dropdown">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Job Type</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
   <div class="dropdown-menu" id="dropdown-menu" role="menu">
     <div class="dropdown-content">
-      <a href="#" class="dropdown-item" value="ft">
+      <a class="dropdown-item" value="ft">
         Full-Time
       </a>
       <a class="dropdown-item" value="pt">
@@ -119,7 +124,7 @@
     <div class="field">
         <label class="label is-medium">Job Wage:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-medium" type="email" placeholder="Wage">
+            <input class="input is-medium" type="email" placeholder="Wage" value={{wage}}>
     </div>
 
 
