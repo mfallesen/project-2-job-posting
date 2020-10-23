@@ -15,6 +15,6 @@ module.exports = function(router) {
 
     // route for page to create a new company (may just be a post route and not a separate page)
     router.get('/company/new', function (req, res) {
-        res.sendFile(path.join(__dirname, '../../public/new-company.html'))
+        res.render('newcompany')
     });
 }
