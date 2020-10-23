@@ -1,6 +1,18 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 
+// Nodemailer requirements
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'nextstep123@gmail.com',
+        pass: 'MYtest123!@#'
+    }
+})
+
+// End Nodemailer requirements
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -31,3 +43,16 @@ db.sequelize.sync({ force: false }).then(function () {
   });
 });
 
+// Nodemailer call
+
+// app.post('/')
+
+// transporter.sendMail(mailOptions, function (err, info) {
+//   if (err) {
+//       console.log(err);
+//   } else {
+//       console.log('message sent: ' + info.response);
+//   }
+// });
+
+// end nodemailer
