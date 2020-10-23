@@ -90,7 +90,7 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', {jobs: jobs})
+                res.render('jobindex', { jobs: jobs })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
@@ -157,6 +157,12 @@ module.exports = function (router) {
         db.Job.findOne({
             where: { id: req.params.id }
         }).then(function (dbJob) {
+            // only allow access if the manager who posted the job is also logged in
+            if (!req.session.manager || req.session.manager.id != dbJob.manager_id) {
+                // return redirect to landing page to stop running code
+                return res.redirect('/')
+            }
+            
             // if id does not exist in jobs table, return status code 404
             if (!dbJob) {
                 return res.status(404).send('Job not found')
@@ -180,15 +186,15 @@ module.exports = function (router) {
     });
 
     // route to display page for a specific job
-    router.get('/job/:id', function(req, res) {
+    router.get('/job/:id', function (req, res) {
         // get job from db
         db.Job.findOne({
-            where: {id: req.params.id},
+            where: { id: req.params.id },
             include: {
                 model: db.Manager,
                 include: db.Company
             }
-        }).then(function(dbJob) {
+        }).then(function (dbJob) {
             // if no job is found, status 404
             if (!dbJob) {
                 return res.status(404).send('No job found').end();
