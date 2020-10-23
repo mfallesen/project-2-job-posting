@@ -35,6 +35,11 @@ $(document).ready(function () {
         $("#signup-modal").addClass("is-active");
     })
 
+    $(document).on("click", ".manager-contact", function () {
+        $(".modal").addClass("is-active");
+    })
+
+
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
     })
@@ -74,7 +79,7 @@ $(document).ready(function () {
 
         // request to server to create a new manager account
         $.ajax({
-            url: '/api/account/manager/new',
+            url: '/manager/create',
             method: "POST",
             data: newAccountObj,
             statusCode: {
@@ -85,6 +90,7 @@ $(document).ready(function () {
             }
         }).done(function(response) {
             console.log('new manager account created')
+            window.location.href = '/manager/' + response.id
         })
     })
 
@@ -130,9 +136,27 @@ $(document).ready(function () {
             companyForm.css('display', 'none')
         }
     })
+
     $("#contact-close").on("click", function () {
         $(".modal").removeClass("is-active")
     })
+
+    $(".modal-close").on("click", function () {
+        $(".modal").removeClass("is-active")
+    })
+
+    $(".job-data").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/" + jobId;
+
+    })
+
+    $(".job-edit").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/update/" + jobId;
+
+    })
+
     // +++++++++++++++
     // Work In Progress
     $("#contact-send").on("click", function (event) {
