@@ -200,7 +200,13 @@ module.exports = function (router) {
             const { id: company_id, company_name, phone: company_phone } = Company
 
             // if job is found, separate job/manager/company info into separate objects
-            const job = { id, title, description, type, wage }
+            const job = { id, title, description, wage }
+            // write full words for job type
+            if (dbJob.type === 'ft') {
+                job.type = 'Full Time'
+            } else {
+                job.type = "Part Time"
+            }
             const manager = {
                 id: manager_id,
                 first_name,
