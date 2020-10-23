@@ -97,4 +97,14 @@ $(document).ready(function () {
         })
     })
 
+    $('.companyInput').on('change', function() {
+        const companyDropdown = $('.companyInput');
+        const companyForm = $('.companyForm')
+
+        if (companyDropdown.val() === 'newCompany') {
+            companyForm.css('display', 'block')
+        } else {
+            companyForm.css('display', 'none')
+        }
+    })
 })

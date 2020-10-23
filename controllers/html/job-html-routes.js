@@ -147,7 +147,6 @@ module.exports = function (router) {
 
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
-        // TODO: change render to match file name when file is created
         res.render('jobpost')
     });
 

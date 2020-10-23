@@ -94,4 +94,9 @@ module.exports = function (router) {
             res.status(500).end();
         })
     });
+   
+    // route for view manager's created job postings
+    router.get('/manager/:id/jobs', function(req, res) {
+        
+    });
 }

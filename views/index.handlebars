@@ -23,7 +23,7 @@
                         <button id="login" class="button">Log In</button>
                         <button id="signup" class="button">Sign Up</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -79,11 +79,11 @@
         <footer class="modal-card-foot">
             <button class="button is-primary loginBtn" class="submit">
                 Submit
-              </button>
-        
-          </footer>
-        </div>
-  </div>
+            </button>
+
+        </footer>
+    </div>
+</div>
 
 {{!-- Sign Up Modal --}}
 <div class="modal" id="signup-modal">
@@ -169,8 +169,45 @@
                                     {{#each companies}}
                                     <option value='{{id}}'>{{company_name}}</option>
                                     {{/each}}
+                                    <option value='newCompany'>Create new company</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- hidden inputs for creating a new company --}}
+            <div class='companyForm'>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Company Name</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field is-expanded">
+                            <p class="control has-icons-left">
+                                <input class="input companyNameInput" type="text" placeholder="Company Name">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Company Phone</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button is-static">
+                                    +1
+                                </a>
+                            </p>
+                            <p class="control is-expanded">
+                                <input class="input companyPhoneInput" type="tel" placeholder="Company Phone">
+                            </p>
                         </div>
                     </div>
                 </div>
