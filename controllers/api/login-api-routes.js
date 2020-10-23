@@ -28,10 +28,11 @@ module.exports = function (router) {
                 company_id: company_id
             }).then(function (newManager) {
                 // create a new session with manager's info
-                // req.session.manager = {
-                //     email: email,
-                //     id: id
-                // }
+                req.session.manager = {
+                    email: email,
+                    id: newManager.id
+                }
+                // return 200 status code
                 res.status(200).json(newManager)
             })
         })

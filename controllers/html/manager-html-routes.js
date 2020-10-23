@@ -49,18 +49,19 @@ module.exports = function (router) {
             manager.last_name = managerInfo.last_name
             manager.email = managerInfo.email
             manager.phone = managerInfo.phone
+            manager.bio = managerInfo.bio
 
             // object to hold info of company manager works for
             const company = dbManager.Company.dataValues
 
             // temp json for front-end team
-            res.json({ manager: manager, company: company })
+            // res.json({ manager: manager, company: company })
 
             // render handlebars file with company and manager objects
-            // res.render('manager', {
-            //     manager: manager,
-            //     company: company
-            // })
+            res.render('managerpage', {
+                manager: manager,
+                company: company
+            })
         }).catch(err => {
             // return status code 500 if other errors occur
             res.status(500).end();
