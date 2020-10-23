@@ -43,7 +43,7 @@ $(document).ready(function () {
     })
     // +++++++++++++++
     // Work In Progress
-    $("#contact-send").addEventListener("click", function(event) {
+    $("#contact-send").on("click", function (event) {
         event.preventDefault();
 
         const mailOptions = {
