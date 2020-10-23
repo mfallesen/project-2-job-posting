@@ -74,7 +74,7 @@ $(document).ready(function () {
 
         // request to server to create a new manager account
         $.ajax({
-            url: '/api/account/manager/new',
+            url: '/manager/new',
             method: "POST",
             data: newAccountObj,
             statusCode: {
