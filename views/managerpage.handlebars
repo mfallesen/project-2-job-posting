@@ -52,7 +52,7 @@
 
         <div class= "user-profile">
 
-            <div id= "view-profile">
+            <div class= "view-profile">
                 <p>First Name: {{first_name}}</p>
                 <p>Last Name: {{last_name}}</p>
                 <p>E-mail: {{email}}</p>
@@ -67,7 +67,7 @@
 
             </div>
 
-            <div id= "edit-profile">
+            <div class= "edit-profile">
 
                 <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -131,11 +131,9 @@
             </div>
 
             <div class="field">
-                <div class="field-label is-normal">
-                    <label class="label">Biography</label>
-                </div>
+                <label class="label">Bio</label>
                     <div class="control">
-                        <textarea class="textarea is-primary" placeholder="Write some information about yourself and your company here" value= {{bio}}></textarea>
+                        <textarea class="textarea bioInput" placeholder="Write a bio about yourself or your company here" value= {{manager.bio}}></textarea>
                     </div>
                 </div>
 
