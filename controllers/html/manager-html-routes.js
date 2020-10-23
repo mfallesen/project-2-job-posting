@@ -94,9 +94,14 @@ module.exports = function (router) {
             res.status(500).end();
         })
     });
-   
+
     // route for view manager's created job postings
-    router.get('/manager/:id/jobs', function(req, res) {
-        
+    router.get('/manager/:id/jobs', function (req, res) {
+        // grab all jobs for that manager from db
+        db.Job.findAll({
+            where: { manager_id: req.params.id }
+        }).then(function(dbJobs) {
+            res.render('managerjobs', {jobs: dbJobs})
+        })
     });
 }
