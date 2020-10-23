@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = function (router) {
     // route to render page to create a new manager
-    router.get('/account/manager/new', function (req, res) {
+    router.get('/manager/new', function (req, res) {
 
         // get list of all companies in table to provide manager a list of companies to choose from
         db.Company.findAll({
@@ -68,19 +68,24 @@ module.exports = function (router) {
     });
 
     // route to render page for updating manager profile
-    router.get('/account/manager/update/:id', function(req, res) {
+    router.get('/manager/update/:id', function (req, res) {
+        // check if manager is currently logged in, allowing him access to his profile page
+        if (!req.session.manager || req.session.manager.id != req.params.id) {
+            // return redirect to landing page to stop running code
+            return res.redirect('/')
+        }
         db.Manager.findOne({
-            where: {id: req.params.id}
-        }).then(function(dbManager) {
+            where: { id: req.params.id }
+        }).then(function (dbManager) {
             // if no manager can be found, status code 404
             if (!dbManager) {
                 return res.status(404).send('No manager found').end();
             }
 
             // store values from queried manager
-            const {id, first_name, last_name, email, phone} = dbManager
+            const { id, first_name, last_name, email, phone } = dbManager
             // create new manager obj with queried data
-            const manager = {id, first_name, last_name, email, phone}
+            const manager = { id, first_name, last_name, email, phone }
 
             // send json of manager obj for front-end team until page has been created
             res.json(manager)
