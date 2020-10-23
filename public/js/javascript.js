@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
-    $(document).on("click", "#login", function () {
+    $(document).on("click", "#viewjobs", function() {
+        location.href="/job/listings";
+    })
+
+    $(document).on("click", "#login", function() {
         $("#login-modal").addClass("is-active");
     })
 

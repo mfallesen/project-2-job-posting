@@ -1,0 +1,63 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                    Profile
+                </a>
+
+                <a class="navbar-item" href="api/job/create">
+                    Post a Job
+                </a>
+
+                <a class="navbar-item">
+                    View Your Listings
+                </a>
+            </div>
+
+        
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign Out</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+<div class="container">
+    
+    <div class= "card">
+        <div class= "card-header-title">
+            Welcome
+        </div>
+
+        <div class= "user-profile">
+            <p>First Name: {{first_name}}</p>
+            <p>Last Name: {{last_name}}</p>
+            <p>E-mail: {{email}}</p>
+            <p>Phone: {{phone}}</p>
+            <p>Company Name: {{company.company_name}}</p>
+            <p>Company Phone: {{company.phone}}</p>
+        </div>
+    </div>
+   
+ </div>
