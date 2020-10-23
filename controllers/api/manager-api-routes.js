@@ -3,6 +3,7 @@ const db = require('../../models')
 module.exports = function(router) {
     // route to create a new manager
     router.post('/api/account/manager/new', function(req, res) {
+        console.log('\n***CREATING NEW ACCOUNT***\n')
         // grab and store values from req.body
         const {first_name, last_name, email, password, phone, company_id} = req.body
 
@@ -10,9 +11,9 @@ module.exports = function(router) {
         db.Manager.findOne({
             where: {email: email}
         }).then(function(dbManager) {
-            // if there is a manager with the same email, send status 500
+            // if there is a manager with the same email, send status 401
             if (dbManager) {
-                return res.status(500).end()
+                return res.status(401).end()
             }
 
             // if no manager is found, create a new manager in the db with the req values

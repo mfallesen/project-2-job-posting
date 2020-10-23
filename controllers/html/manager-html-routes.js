@@ -16,9 +16,9 @@ module.exports = function (router) {
             res.json(companiesArr)
 
             // render manager page with info of manager and array of all company names and id's
-            // res.render('new-manager', {
-            //     companies: companiesArr
-            // })
+            res.render('new-manager', {
+                companies: companiesArr
+            })
         })
     });
 

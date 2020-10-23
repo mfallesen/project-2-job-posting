@@ -44,19 +44,6 @@ function modifyJobArray(dbJobs) {
 
 
 module.exports = function (router) {
-    // router.get('/jobs/listings', function (req, res) {
-    //     // find jobs from database
-    //     //search jobs, if filter then bring jobs back based on filer, if no filter then bring all jobs back from table
-
-    //     db.Job.findAll({ where: req.query })
-    //         .then(jobs => {
-    //             res.json(jobs);
-    //         })
-    //         .catch(err => {
-    //             res.status(422).json(err);
-    //         });
-    // });
-
     // route to return job listings with optional filter
     router.get('/job/listings/:filter?', function (req, res) {
         // define empty variables for assigning filters
@@ -161,7 +148,7 @@ module.exports = function (router) {
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
         // TODO: change render to match file name when file is created
-        res.render('something')
+        res.render('jobpost')
     });
 
     // route to render page for updating an existing job posting
@@ -196,15 +183,43 @@ module.exports = function (router) {
     router.get('/job/:id', function(req, res) {
         // get job from db
         db.Job.findOne({
-            where: {id: req.params.id}
+            where: {id: req.params.id},
+            include: {
+                model: db.Manager,
+                include: db.Company
+            }
         }).then(function(dbJob) {
             // if no job is found, status 404
             if (!dbJob) {
                 return res.status(404).send('No job found').end();
             }
 
+            // grab values from db job
+            const { id, title, description, type, wage, Manager: managerObj } = dbJob
+            const { id: manager_id, first_name, last_name, email, phone, Company } = managerObj
+            const { id: company_id, company_name, phone: company_phone } = Company
+
+            // if job is found, separate job/manager/company info into separate objects
+            const job = { id, title, description, type, wage }
+            const manager = {
+                id: manager_id,
+                first_name,
+                last_name,
+                email,
+                phone,
+            }
+            const company = {
+                id: company_id,
+                company_name,
+                phone: company_phone
+            }
+            // res.json({job, manager, company})
             // render job page with job object
-            res.render('jobpost', dbJob)
+            res.render('jobdetails', {
+                job: job,
+                manager: manager,
+                company: company
+            })
         })
     });
 }
