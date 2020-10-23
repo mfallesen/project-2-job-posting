@@ -135,6 +135,7 @@ $(document).ready(function () {
             companyForm.css('display', 'none')
         }
     })
+
     $("#contact-close").on("click", function () {
         $(".modal").removeClass("is-active")
     })
