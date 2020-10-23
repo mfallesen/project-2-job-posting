@@ -1,13 +1,12 @@
 // Nodemailer Implementation
-const nodemailer = require('nodemailer'); /* this wont work browser side. Ask TA for assistance tomorrow? browserify? */
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'nextstep123@gmail.com',
-        pass: 'MYtest123!@#'
-    }
-})
+// const nodemailer = require('nodemailer');
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'nextstep123@gmail.com',
+//         pass: 'MYtest123!@#'
+//     }
+// })
 // ++++++++++++++
 // Place inside event listener for submit
 // ++++++++++++++
@@ -44,23 +43,18 @@ $(document).ready(function () {
     })
     // +++++++++++++++
     // Work In Progress
-    $("#contact-send").addEventListener("click", function (event) {
+    $("#contact-send").addEventListener("click", function(event) {
         event.preventDefault();
 
         const mailOptions = {
-            from: `${"#contact-email".value}`,
+            from: $("#contact-email").val(),
             to: 'random manager'/* manager email inserted here */,
-            subject: `${"#contact-name".value} is interested in a job on NextStep`,
+            subject: $("#contact-name").val() + "is interested in a job on NextStep!",
             text: `${"#contact-message".value}`
         };
         
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('message sent: ' + info.response);
-            }
-        });
+        return mailOptions
+        
     })
     // +++++++++++++++
 
