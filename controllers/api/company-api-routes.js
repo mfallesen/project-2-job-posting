@@ -13,7 +13,7 @@ module.exports = function (router) {
             }
             // if no company with same name is found, create new company in db and send back status 200
             db.Company.create(req.body).then(function(newCompany) {
-                res.status(200).end();
+                res.status(200).json(newCompany.dataValues).end();
             })
         }).catch(err => {
             // if errors occur from issues parsing data sent from client, status code 422

@@ -2,26 +2,6 @@ const db = require('../../models')
 const path = require('path')
 
 module.exports = function (router) {
-    // route to render page to create a new manager
-    router.get('/manager/new', function (req, res) {
-
-        // get list of all companies in table to provide manager a list of companies to choose from
-        db.Company.findAll({
-            attributes: [
-                'id',
-                'company_name'
-            ]
-        }).then(function (companiesArr) {
-            // temp json for front-end team
-            res.json(companiesArr)
-
-            // render manager page with info of manager and array of all company names and id's
-            res.render('new-manager', {
-                companies: companiesArr
-            })
-        })
-    });
-
     // route to render manager's profile page
     router.get('/manager/:id', function (req, res) {
         // check if manager is currently logged in, allowing him access to his profile page
@@ -63,34 +43,6 @@ module.exports = function (router) {
         }).catch(err => {
             // return status code 422 if other errors occur
             res.status(422).end();
-        })
-    });
-
-    // route to render page for updating manager profile
-    router.get('/manager/update/:id', function (req, res) {
-        // check if manager is currently logged in, allowing him access to his profile page
-        if (!req.session.manager || req.session.manager.id != req.params.id) {
-            // return redirect to landing page to stop running code
-            // return res.redirect('/')
-        }
-        db.Manager.findOne({
-            where: { id: req.params.id }
-        }).then(function (dbManager) {
-            // if no manager can be found, status code 404
-            if (!dbManager) {
-                return res.status(404).send('No manager found').end();
-            }
-
-            // store values from queried manager
-            const { id, first_name, last_name, email, phone } = dbManager
-            // create new manager obj with queried data
-            const manager = { id, first_name, last_name, email, phone }
-
-            // send json of manager obj for front-end team until page has been created
-            res.json(manager)
-        }).catch(err => {
-            // return status code 500 if other errors occur
-            res.status(500).end();
         })
     });
 

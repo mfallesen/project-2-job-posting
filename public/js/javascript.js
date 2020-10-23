@@ -54,6 +54,9 @@ $(document).ready(function () {
         const companyId = $('.companyInput').val()
         const password = $('.passwordInput').val()
 
+        const companyName = $('.companyNameInput').val()
+        const companyPhone = $('.companyPhoneInput').val()
+
         // check if any user inputs are blank
         if (
             !firstName ||
@@ -66,7 +69,7 @@ $(document).ready(function () {
             // return to avoid running ajax request
             return alert('all fields are required')
         }
-        
+
         // object of all values from input fields to send in ajax request
         const newAccountObj = {
             first_name: firstName,
@@ -77,25 +80,65 @@ $(document).ready(function () {
             password: password
         }
 
-        // request to server to create a new manager account
-        $.ajax({
-            url: '/manager/create',
-            method: "POST",
-            data: newAccountObj,
-            statusCode: {
-                401: function() {
-                    // 401 indicates account with email already exists
-                    alert('Email already taken')
+        if (companyId === 'newCompany') {
+            console.log('create new company')
+            // if user is also creating a new company, make an ajax call to make a new company first
+            $.ajax({
+                method: 'POST',
+                url: "/api/company/new",
+                data: {
+                    company_name: companyName,
+                    phone: companyPhone,
+                },
+                statusCode: {
+                    500: function() {
+                        // company with same name already exists
+                    },
+                    422: function() {
+                        // data sent can not be parsed by server
+                    }
                 }
-            }
-        }).done(function(response) {
-            console.log('new manager account created')
-            window.location.href = '/manager/' + response.id
-        })
+                }).then(function(response) {
+                    // set company id to id of new company
+                    newAccountObj.company_id = response.id
+                    // now make an ajax call to make the new manager
+                    $.ajax({
+                        url: '/manager/create',
+                        method: "POST",
+                        data: newAccountObj,
+                        statusCode: {
+                            401: function() {
+                                // account with same email already exists
+                                alert('Email already taken')
+                            }
+                        }
+                    }).then(function(response) {
+                        // if manager is successfully created, redirect to profile page
+                        window.location.href = '/manager/' + response.id
+                    })
+                })
+        } else {
+            // if user is not making a new company, make normal ajax call to create new user
+            $.ajax({
+                url: '/manager/create',
+                method: "POST",
+                data: newAccountObj,
+                statusCode: {
+                    401: function () {
+                        // 401 indicates account with email already exists
+                        alert('Email already taken')
+                    }
+                }
+            }).done(function (response) {
+                console.log('new manager account created')
+                window.location.href = '/manager/' + response.id
+            })
+        }
+
     })
 
     // listener for log in button
-    $('.loginBtn').on('click', function() {
+    $('.loginBtn').on('click', function () {
         // grab input values from page
         const email = $('.loginEmail').val();
         const password = $('.loginPassword').val();
@@ -114,19 +157,19 @@ $(document).ready(function () {
                 password: password
             },
             statusCode: {
-                401: function() {
+                401: function () {
                     // user entered incorrect email or password
                     alert('Incorrect email or password')
                 }
             }
-        }).done(function(response) {
+        }).done(function (response) {
             // if log in is successful, redirect to manager's profile page
             console.log(response)
             window.location.href = '/manager/' + response.manager.id
         })
     })
 
-    $('.companyInput').on('change', function() {
+    $('.companyInput').on('change', function () {
         const companyDropdown = $('.companyInput');
         const companyForm = $('.companyForm')
 
@@ -147,22 +190,22 @@ $(document).ready(function () {
 
     $(".job-data").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href= "/job/" + jobId;
+        window.location.href = "/job/" + jobId;
 
     })
 
     $(".job-edit").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href= "/job/update/" + jobId;
+        window.location.href = "/job/update/" + jobId;
 
     })
 
-    $(".edit-toggle").on("click", function() {
+    $(".edit-toggle").on("click", function () {
         $(".view-profile").attr("style", "display: none")
         $(".edit-profile").attr("style", "display: block")
     })
 
-    $(".save-changes").on("click", function() {
+    $(".save-changes").on("click", function () {
         const firstName = $('.firstNameInput').val()
         const lastName = $('.lastNameInput').val()
         const email = $('.emailInput').val()
@@ -180,11 +223,11 @@ $(document).ready(function () {
                 bio: bio
             },
             statusCode: {
-                500: function() {
+                500: function () {
                     alert('Incorrect email or password')
                 }
             }
-        }).done(function(response) {
+        }).done(function (response) {
             location.reload();
         })
     })
@@ -200,7 +243,7 @@ $(document).ready(function () {
             subject: `${"#contact-name".value} is interested in a job on NextStep`,
             text: `${"#contact-message".value}`
         };
-        
+
         transporter.sendMail(mailOptions, function (err, info) {
             if (err) {
                 console.log(err);
