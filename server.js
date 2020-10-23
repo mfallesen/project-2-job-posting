@@ -3,6 +3,18 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 require('dotenv').config();
 
+// Nodemailer requirements
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'nextstep120@gmail.com',
+    pass: 'MYtest123!@#'
+  }
+})
+
+// End Nodemailer requirements
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -21,7 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-      maxAge: 15 * 60 * 1000
+    maxAge: 15 * 60 * 1000
   }
 }))
 
@@ -43,3 +55,16 @@ db.sequelize.sync({ force: false }).then(function () {
   });
 });
 
+// Nodemailer call
+
+app.post('/message', (req, res) => {
+  transporter.sendMail(req.body, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('message sent: ' + info.response);
+    }
+  })
+});
+
+// end nodemailer

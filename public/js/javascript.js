@@ -1,25 +1,3 @@
-// Nodemailer Implementation
-// const nodemailer = require('nodemailer'); /* this wont work browser side. Ask TA for assistance tomorrow? browserify? */
-
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'nextstep123@gmail.com',
-//         pass: 'MYtest123!@#'
-//     }
-// })
-// ++++++++++++++
-// Place inside event listener for submit
-// ++++++++++++++
-
-// +++++++++++++
-
-
-
-
-
-
-
 
 $(document).ready(function () {
 
@@ -35,7 +13,7 @@ $(document).ready(function () {
         $("#signup-modal").addClass("is-active");
     })
 
-    $(document).on("click", ".manager-contact", function () {
+    $(document).on("click", ".contact-manager", function () {
         $(".modal").addClass("is-active");
     })
 
@@ -230,28 +208,28 @@ $(document).ready(function () {
         }).done(function (response) {
             location.reload();
         })
+
+        // +++++++++++++++
+        // Work In Progress
+        $("#contact-send").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Build the email object for nodemailer
+            const mailOptions = {
+                from: $("#contact-email").val(),
+                to: $("#manager-email").text(),
+                subject: $("#contact-name").val() + "is interested in a job on NextStep!",
+                text: $("#contact-message").val()
+            };
+
+            // send to server.js to sent the email 
+            $.ajax({
+                url: "/message",
+                method: "POST",
+                data: mailOptions,
+            })
+
+        })
+
     })
-
-    // +++++++++++++++
-    // Work In Progress
-    $("#contact-send").addEventListener("click", function (event) {
-        event.preventDefault();
-
-        const mailOptions = {
-            from: `${"#contact-email".value}`,
-            to: 'random manager'/* manager email inserted here */,
-            subject: `${"#contact-name".value} is interested in a job on NextStep`,
-            text: `${"#contact-message".value}`
-        };
-
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('message sent: ' + info.response);
-            }
-        });
-    })
-    // +++++++++++++++
-
 })
