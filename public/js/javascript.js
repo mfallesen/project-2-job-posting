@@ -144,6 +144,12 @@ $(document).ready(function () {
         $(".modal").removeClass("is-active")
     })
 
+    $(".job-data").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/" + jobId;
+
+    })
+
 
     // +++++++++++++++
     // Work In Progress
