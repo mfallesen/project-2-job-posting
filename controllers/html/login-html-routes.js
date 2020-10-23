@@ -9,8 +9,24 @@ module.exports = function(router) {
                 'company_name'
             ]
         }).then(function (companiesArr) {
+            // object with array of jobs to be used for rendering page
+            const data = {
+                companies: []
+            }
+            
+            // iterate through db array of companies
+            companiesArr.forEach(company => {
+                // create new object to to add to companies array
+                const companyObj = {
+                    id: company.dataValues.id,
+                    company_name: company.dataValues.company_name
+                }
+                // append obj to companies arr
+                data.companies.push(companyObj)
+            })
             // render index page with info of manager and array of all company names and id's
-            res.render('index', {companies: companiesArr})
+            // res.json(companiesArr)
+            res.render('index', data)
         });
     });
 }

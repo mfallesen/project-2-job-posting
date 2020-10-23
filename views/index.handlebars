@@ -101,7 +101,7 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <input class="input" type="text" placeholder="First Name">
+                            <input class="input firstNameInput" type="text" placeholder="First Name">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -110,7 +110,7 @@
 
                     <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="Last Name">
+                            <input class="input lastNameInput" type="text" placeholder="Last Name">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -126,7 +126,7 @@
                 <div class="field-body">
                     <div class="field is-expanded">
                         <p class="control is-expanded has-icons-left has-icons-right">
-                            <input class="input" type="email" placeholder="E-mail address">
+                            <input class="input emailInput" type="email" placeholder="E-mail address">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
@@ -148,7 +148,7 @@
                                 </a>
                             </p>
                             <p class="control is-expanded">
-                                <input class="input" type="tel" placeholder="Your phone number">
+                                <input class="input phoneInput" type="tel" placeholder="Your phone number">
                             </p>
                         </div>
                     </div>
@@ -163,7 +163,14 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input class="input" type="text" placeholder="Your company's name">
+                            {{!-- <input class="input companyInput" type="text" placeholder="Your company's name"> --}}
+                            <div class="select">
+                                <select class='companyInput'>
+                                    {{#each companies}}
+                                    <option value='{{id}}'>{{company_name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,7 +183,7 @@
                 <div class="field-body">
                     <div class="field is-expanded">
                         <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Enter a secure password">
+                            <input class="input passwordInput" type="password" placeholder="Enter a secure password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -187,7 +194,7 @@
 
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-primary" class="submit">
+            <button class="button is-primary newAccountBtn" class="submit">
                 Create Account
             </button>
         </footer>

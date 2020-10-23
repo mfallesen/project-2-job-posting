@@ -3,10 +3,9 @@ const db = require('../../models')
 module.exports = function(router) {
     // route to create a new manager
     router.post('/api/account/manager/new', function(req, res) {
-        console.log('\n***CREATING NEW ACCOUNT***\n')
         // grab and store values from req.body
         const {first_name, last_name, email, password, phone, company_id} = req.body
-
+        
         // check if db alread has a manager with the same email
         db.Manager.findOne({
             where: {email: email}
