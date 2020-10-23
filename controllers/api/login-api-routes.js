@@ -96,5 +96,7 @@ module.exports = function (router) {
     // route to destroy session on logout
     router.post('/logout', function (req, res) {
         req.session.destroy();
+        // redirect user to landing page on logout
+        res.redirect('/')
     });
 }
