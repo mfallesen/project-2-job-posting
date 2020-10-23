@@ -150,6 +150,11 @@ $(document).ready(function () {
 
     })
 
+    $(".job-edit").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/update/" + jobId;
+
+    })
 
     // +++++++++++++++
     // Work In Progress
