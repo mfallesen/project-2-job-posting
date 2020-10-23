@@ -74,7 +74,7 @@ $(document).ready(function () {
 
         // request to server to create a new manager account
         $.ajax({
-            url: '/manager/new',
+            url: '/manager/create',
             method: "POST",
             data: newAccountObj,
             statusCode: {
@@ -85,6 +85,7 @@ $(document).ready(function () {
             }
         }).done(function(response) {
             console.log('new manager account created')
+            window.location.href = '/manager/' + response.id
         })
     })
 
