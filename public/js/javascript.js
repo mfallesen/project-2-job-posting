@@ -186,6 +186,7 @@ $(document).ready(function () {
             }
         }).done(function(response) {
             location.reload();
+        })
     })
 
     // +++++++++++++++
