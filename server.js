@@ -1,5 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+require('dotenv').config();
 
 // Nodemailer requirements
 const nodemailer = require('nodemailer');
@@ -26,11 +28,21 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+      maxAge: 15 * 60 * 1000
+  }
+}))
+
 require('./controllers/html/login-html-routes')(app);
 require('./controllers/api/company-api-routes')(app);
 require('./controllers/api/job-api-routes')(app);
 require('./controllers/api/manager-api-routes')(app);
 require('./controllers/api/user-api-routes')(app);
+require('./controllers/api/login-api-routes')(app);
 require('./controllers/html/company-html-routes')(app);
 require('./controllers/html/job-html-routes')(app);
 require('./controllers/html/manager-html-routes')(app);

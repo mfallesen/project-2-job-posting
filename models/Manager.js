@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 module.exports = function(sequelize, DataTypes) {
     var Manager = sequelize.define('Manager', {
         first_name: {
@@ -17,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         phone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
     }, {
@@ -39,6 +41,12 @@ module.exports = function(sequelize, DataTypes) {
             }
         })
     }
+
+    Manager.beforeCreate(function(manager){
+
+        manager.password= bcrypt.hashSync(manager.password, bcrypt.genSaltSync(10), null);
+
+    })
 
     return Manager;
 }
