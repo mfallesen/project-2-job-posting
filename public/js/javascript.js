@@ -35,6 +35,11 @@ $(document).ready(function () {
         $("#signup-modal").addClass("is-active");
     })
 
+    $(document).on("click", ".manager-contact", function () {
+        $(".modal").addClass("is-active");
+    })
+
+
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
     })
@@ -131,9 +136,27 @@ $(document).ready(function () {
             companyForm.css('display', 'none')
         }
     })
+
     $("#contact-close").on("click", function () {
         $(".modal").removeClass("is-active")
     })
+
+    $(".modal-close").on("click", function () {
+        $(".modal").removeClass("is-active")
+    })
+
+    $(".job-data").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/" + jobId;
+
+    })
+
+    $(".job-edit").on("click", function () {
+        jobId = $(this).attr("data-id");
+        window.location.href= "/job/update/" + jobId;
+
+    })
+
     // +++++++++++++++
     // Work In Progress
     $("#contact-send").addEventListener("click", function (event) {
