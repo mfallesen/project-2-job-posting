@@ -51,12 +51,105 @@
         </div>
 
         <div class= "user-profile">
-            <p>First Name: {{first_name}}</p>
-            <p>Last Name: {{last_name}}</p>
-            <p>E-mail: {{email}}</p>
-            <p>Phone: {{phone}}</p>
-            <p>Company Name: {{company.company_name}}</p>
-            <p>Company Phone: {{company.phone}}</p>
+
+            <div id= "view-profile">
+                <p>First Name: {{first_name}}</p>
+                <p>Last Name: {{last_name}}</p>
+                <p>E-mail: {{email}}</p>
+                <p>Phone: {{phone}}</p>
+                <p>Company Name: {{company.company_name}}</p>
+                <p>Company Phone: {{company.phone}}</p>
+
+                <p>
+                     <button class="button is-primary edit-toggle">Edit Profile</button>
+                </p>
+
+
+            </div>
+
+            <div id= "edit-profile">
+
+                <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input firstNameInput" type="text" value={{manager.first_name}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input lastNameInput" type="text" value={{manager.last_name}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">E-mail</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-expanded">
+                        <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input emailInput" type="email" value={{manager.email}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Phone</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-expanded">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button is-static">
+                                    +1
+                                </a>
+                            </p>
+                            <p class="control is-expanded">
+                                <input class="input phoneInput" type="tel" value={{manager.phone}}>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="field-label is-normal">
+                    <label class="label">Biography</label>
+                </div>
+                    <div class="control">
+                        <textarea class="textarea is-primary" placeholder="Write some information about yourself and your company here" value= {{bio}}></textarea>
+                    </div>
+                </div>
+
+
+            <button class="button is-primary save-changes">Save Changes</button>
+
+            </div>
+
+
+
+           
+
+           
+            
         </div>
     </div>
    
