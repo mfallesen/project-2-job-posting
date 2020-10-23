@@ -65,7 +65,7 @@ module.exports = function (router) {
         });
     });
 
-    // route to log in manager
+    // route to log in user
     router.post('/user/login', function (req, res) {
         // look for a manager
         db.User.findOne({
@@ -88,6 +88,7 @@ module.exports = function (router) {
         });
     });
 
+    // dev route for viewing session data
     router.get('/sessiondata', function (req, res) {
         res.json(req.session)
     });

@@ -71,6 +71,11 @@ $(document).ready(function () {
         const email = $('.loginEmail').val();
         const password = $('.loginPassword').val();
 
+        // if user leave an input field blank, alert user
+        if (!email || !password) {
+            return alert('enter an email and password')
+        }
+
         // make request to login manager
         $.ajax({
             url: '/manager/login',
