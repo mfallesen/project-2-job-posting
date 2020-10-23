@@ -1,25 +1,3 @@
-// Nodemailer Implementation
-// const nodemailer = require('nodemailer'); /* this wont work browser side. Ask TA for assistance tomorrow? browserify? */
-
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'nextstep123@gmail.com',
-//         pass: 'MYtest123!@#'
-//     }
-// })
-// ++++++++++++++
-// Place inside event listener for submit
-// ++++++++++++++
-
-// +++++++++++++
-
-
-
-
-
-
-
 
 $(document).ready(function () {
 
@@ -35,7 +13,7 @@ $(document).ready(function () {
         $("#signup-modal").addClass("is-active");
     })
 
-    $(document).on("click", ".manager-contact", function () {
+    $(document).on("click", ".contact-manager", function () {
         $(".modal").addClass("is-active");
     })
 
@@ -66,7 +44,7 @@ $(document).ready(function () {
             // return to avoid running ajax request
             return alert('all fields are required')
         }
-        
+
         // object of all values from input fields to send in ajax request
         const newAccountObj = {
             first_name: firstName,
@@ -83,19 +61,19 @@ $(document).ready(function () {
             method: "POST",
             data: newAccountObj,
             statusCode: {
-                401: function() {
+                401: function () {
                     // 401 indicates account with email already exists
                     alert('Email already taken')
                 }
             }
-        }).done(function(response) {
+        }).done(function (response) {
             console.log('new manager account created')
             window.location.href = '/manager/' + response.id
         })
     })
 
     // listener for log in button
-    $('.loginBtn').on('click', function() {
+    $('.loginBtn').on('click', function () {
         // grab input values from page
         const email = $('.loginEmail').val();
         const password = $('.loginPassword').val();
@@ -114,19 +92,19 @@ $(document).ready(function () {
                 password: password
             },
             statusCode: {
-                401: function() {
+                401: function () {
                     // user entered incorrect email or password
                     alert('Incorrect email or password')
                 }
             }
-        }).done(function(response) {
+        }).done(function (response) {
             // if log in is successful, redirect to manager's profile page
             console.log(response)
             window.location.href = '/manager/' + response.manager.id
         })
     })
 
-    $('.companyInput').on('change', function() {
+    $('.companyInput').on('change', function () {
         const companyDropdown = $('.companyInput');
         const companyForm = $('.companyForm')
 
@@ -147,22 +125,22 @@ $(document).ready(function () {
 
     $(".job-data").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href= "/job/" + jobId;
+        window.location.href = "/job/" + jobId;
 
     })
 
     $(".job-edit").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href= "/job/update/" + jobId;
+        window.location.href = "/job/update/" + jobId;
 
     })
 
-    $(".edit-toggle").on("click", function() {
+    $(".edit-toggle").on("click", function () {
         $(".view-profile").attr("style", "display: none")
         $(".edit-profile").attr("style", "display: block")
     })
 
-    $(".save-changes").on("click", function() {
+    $(".save-changes").on("click", function () {
         const firstName = $('.firstNameInput').val()
         const lastName = $('.lastNameInput').val()
         const email = $('.emailInput').val()
@@ -180,34 +158,35 @@ $(document).ready(function () {
                 bio: bio
             },
             statusCode: {
-                500: function() {
+                500: function () {
                     alert('Incorrect email or password')
                 }
             }
-        }).done(function(response) {
+        }).done(function (response) {
             location.reload();
+        })
+
+        // +++++++++++++++
+        // Work In Progress
+        $("#contact-send").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Build the email object for nodemailer
+            const mailOptions = {
+                from: $("#contact-email").val(),
+                to: $("#manager-email").text(),
+                subject: $("#contact-name").val() + "is interested in a job on NextStep!",
+                text: $("#contact-message").val()
+            };
+
+            // send to server.js to sent the email 
+            $.ajax({
+                url: "/message",
+                method: "POST",
+                data: mailOptions,
+            })
+
+        })
+
     })
-
-    // +++++++++++++++
-    // Work In Progress
-    $("#contact-send").addEventListener("click", function (event) {
-        event.preventDefault();
-
-        const mailOptions = {
-            from: `${"#contact-email".value}`,
-            to: 'random manager'/* manager email inserted here */,
-            subject: `${"#contact-name".value} is interested in a job on NextStep`,
-            text: `${"#contact-message".value}`
-        };
-        
-        transporter.sendMail(mailOptions, function (err, info) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('message sent: ' + info.response);
-            }
-        });
-    })
-    // +++++++++++++++
-
 })
