@@ -6,11 +6,11 @@ require('dotenv').config();
 // Nodemailer requirements
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'nextstep123@gmail.com',
-        pass: 'MYtest123!@#'
-    }
+  service: 'gmail',
+  auth: {
+    user: 'nextstep120@gmail.com',
+    pass: 'MYtest123!@#'
+  }
 })
 
 // End Nodemailer requirements
@@ -33,7 +33,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-      maxAge: 15 * 60 * 1000
+    maxAge: 15 * 60 * 1000
   }
 }))
 
@@ -57,14 +57,15 @@ db.sequelize.sync({ force: false }).then(function () {
 
 // Nodemailer call
 
-// app.post('/')
+app.post('/message', (req, res) => {
 
-// transporter.sendMail(mailOptions, function (err, info) {
-//   if (err) {
-//       console.log(err);
-//   } else {
-//       console.log('message sent: ' + info.response);
-//   }
-// });
+  transporter.sendMail(req.body, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('message sent: ' + info.response);
+    }
+  })
+});
 
 // end nodemailer

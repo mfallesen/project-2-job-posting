@@ -1,10 +1,6 @@
 // Nodemailer Implementation
-<<<<<<< HEAD
-// const nodemailer = require('nodemailer');
-=======
 // const nodemailer = require('nodemailer'); /* this wont work browser side. Ask TA for assistance tomorrow? browserify? */
 
->>>>>>> development
 // const transporter = nodemailer.createTransport({
 //     service: 'gmail',
 //     auth: {
@@ -144,12 +140,16 @@ $(document).ready(function () {
 
         const mailOptions = {
             from: $("#contact-email").val(),
-            to: 'random manager'/* manager email inserted here */,
+            to: $("#manager-email").val(),/* manager email inserted here */
             subject: $("#contact-name").val() + "is interested in a job on NextStep!",
-            text: `${"#contact-message".value}`
+            text: $("#contact-message").val()
         };
         
-        return mailOptions
+        $.ajax({
+            url: "/message",
+            method: "POST",
+            data: mailOptions,
+        })
         
     })
     // +++++++++++++++
