@@ -32,6 +32,9 @@ $(document).ready(function () {
         const companyId = $('.companyInput').val()
         const password = $('.passwordInput').val()
 
+        const companyName = $('.companyNameInput').val()
+        const companyPhone = $('.companyPhoneInput').val()
+
         // check if any user inputs are blank
         if (
             !firstName ||
@@ -55,21 +58,61 @@ $(document).ready(function () {
             password: password
         }
 
-        // request to server to create a new manager account
-        $.ajax({
-            url: '/manager/create',
-            method: "POST",
-            data: newAccountObj,
-            statusCode: {
-                401: function () {
-                    // 401 indicates account with email already exists
-                    alert('Email already taken')
+        if (companyId === 'newCompany') {
+            console.log('create new company')
+            // if user is also creating a new company, make an ajax call to make a new company first
+            $.ajax({
+                method: 'POST',
+                url: "/api/company/new",
+                data: {
+                    company_name: companyName,
+                    phone: companyPhone,
+                },
+                statusCode: {
+                    500: function() {
+                        // company with same name already exists
+                    },
+                    422: function() {
+                        // data sent can not be parsed by server
+                    }
                 }
-            }
-        }).done(function (response) {
-            console.log('new manager account created')
-            window.location.href = '/manager/' + response.id
-        })
+                }).then(function(response) {
+                    // set company id to id of new company
+                    newAccountObj.company_id = response.id
+                    // now make an ajax call to make the new manager
+                    $.ajax({
+                        url: '/manager/create',
+                        method: "POST",
+                        data: newAccountObj,
+                        statusCode: {
+                            401: function() {
+                                // account with same email already exists
+                                alert('Email already taken')
+                            }
+                        }
+                    }).then(function(response) {
+                        // if manager is successfully created, redirect to profile page
+                        window.location.href = '/manager/' + response.id
+                    })
+                })
+        } else {
+            // if user is not making a new company, make normal ajax call to create new user
+            $.ajax({
+                url: '/manager/create',
+                method: "POST",
+                data: newAccountObj,
+                statusCode: {
+                    401: function () {
+                        // 401 indicates account with email already exists
+                        alert('Email already taken')
+                    }
+                }
+            }).done(function (response) {
+                console.log('new manager account created')
+                window.location.href = '/manager/' + response.id
+            })
+        }
+
     })
 
     // listener for log in button
