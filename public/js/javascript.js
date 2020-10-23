@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    $(document).on("click", "#viewjobs", function() {
+        location.href="/job/listings";
+    })
+
     $(document).on("click", "#login", function() {
         $("#login-modal").addClass("is-active");
     })
@@ -12,5 +16,6 @@ $(document).ready(function() {
         $(".modal").removeClass("is-active")
     })
 
+   
     
 })
