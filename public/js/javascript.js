@@ -157,6 +157,37 @@ $(document).ready(function () {
 
     })
 
+    $(".edit-toggle").on("click", function() {
+        $(".view-profile").attr("style", "display: none")
+        $(".edit-profile").attr("style", "display: block")
+    })
+
+    $(".save-changes").on("click", function() {
+        const firstName = $('.firstNameInput').val()
+        const lastName = $('.lastNameInput').val()
+        const email = $('.emailInput').val()
+        const phone = $('.phoneInput').val()
+        const bio = $('.bioInput').val()
+
+        $.ajax({
+            url: '/api/manager/update',
+            method: 'PUT',
+            data: {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                phone: phone,
+                bio: bio
+            },
+            statusCode: {
+                500: function() {
+                    alert('Incorrect email or password')
+                }
+            }
+        }).done(function(response) {
+            location.reload();
+    })
+
     // +++++++++++++++
     // Work In Progress
     $("#contact-send").addEventListener("click", function (event) {
