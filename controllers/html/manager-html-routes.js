@@ -24,6 +24,11 @@ module.exports = function (router) {
 
     // route to render manager's profile page
     router.get('/manager/:id', function (req, res) {
+        // check if manager is currently logged in, allowing him access to his profile page
+        if (!req.session.manager || req.session.manager.id != req.params.id) {
+            // return redirect to landing page to stop running code
+            return res.redirect('/')
+        }
         // find the manager record in the managers table along with company info for that manager
         db.Manager.findOne({
             where: { id: req.params.id },
