@@ -45,18 +45,20 @@ module.exports = function (router) {
         db.Manager.findOne({
             where: { email: req.body.email }
         }).then(function (dbManager) {
-            // if no manager exists with same email, destroy session and 401
             if (!dbManager) {
-                res.session.destroy();
+                // if no manager exists with same email, destroy session and 401
+                req.session.destroy();
                 return res.status(401).send('Incorrect email or password')
             } else if (bcrypt.compareSync(req.body.password, dbManager.password)) {
-                console.log('passwords match')
+                // if passwords match, create session with manager info
                 req.session.manager = {
                     email: dbManager.email,
                     id: dbManager.id
                 }
+                // send back 200 status
                 res.status(200).json(req.session)
             } else {
+                // if anything else isn't a valid login, destroy sessions and 401 status
                 req.session.destroy();
                 return res.status(401).send("Incorrect email or password")
             }

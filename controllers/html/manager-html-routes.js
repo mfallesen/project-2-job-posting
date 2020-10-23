@@ -23,7 +23,7 @@ module.exports = function (router) {
     });
 
     // route to render manager's profile page
-    router.get('/account/manager/:id', function (req, res) {
+    router.get('/manager/:id', function (req, res) {
         // find the manager record in the managers table along with company info for that manager
         db.Manager.findOne({
             where: { id: req.params.id },

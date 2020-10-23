@@ -65,5 +65,31 @@ $(document).ready(function () {
         })
     })
 
+    // listener for log in button
+    $('.loginBtn').on('click', function() {
+        // grab input values from page
+        const email = $('.loginEmail').val();
+        const password = $('.loginPassword').val();
+
+        // make request to login manager
+        $.ajax({
+            url: '/manager/login',
+            method: 'POST',
+            data: {
+                email: email,
+                password: password
+            },
+            statusCode: {
+                401: function() {
+                    // user entered incorrect email or password
+                    alert('Incorrect email or password')
+                }
+            }
+        }).done(function(response) {
+            // if log in is successful, redirect to manager's profile page
+            console.log(response)
+            window.location.href = '/manager/' + response.manager.id
+        })
+    })
 
 })
