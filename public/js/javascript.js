@@ -166,6 +166,42 @@ $(document).ready(function () {
         $(".modal").removeClass("is-active")
     })
 
+    $(".job-submit").on("click", function() {
+        const jobName = $('.jobtitleInput').val()
+        const jobDescription = $('.jobdescriptionInput').val()
+        const jobType = $('.jobtypeInput').val()
+        const jobPhone = $('.jobphoneInput').val()
+        const jobWage = $('.jobwageInput').val()
+
+        if (
+            !jobName ||
+            !jobDescription ||
+            !jobPhone ||
+            !jobWage
+        ) {
+            // return to avoid running ajax request
+            return alert('all fields are required')
+        } 
+
+        $.ajax({
+            url: '/api/job/create',
+            method: "POST",
+            data: {
+                title: jobName,
+                description: jobDescription,
+                type: jobType,
+            },
+            statusCode: {
+                500: function() {
+                    alert("something weird happened")
+                }
+            }
+        }).done(function (response) {
+            console.log('new job created')
+            window.location.href= "/manager/" + response.id + "/jobs"
+        })
+    })
+
     $(".job-data").on("click", function () {
         jobId = $(this).attr("data-id");
         window.location.href = "/job/" + jobId;
