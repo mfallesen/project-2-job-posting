@@ -35,7 +35,7 @@ $(document).ready(function () {
         $("#signup-modal").addClass("is-active");
     })
 
-    $(document).on("click", ".manager-contact", function () {
+    $(document).on("click", ".contact-manager", function () {
         $(".modal").addClass("is-active");
     })
 
@@ -157,18 +157,18 @@ $(document).ready(function () {
 
     })
 
-    // +++++++++++++++
-    // Work In Progress
     $("#contact-send").on("click", function (event) {
         event.preventDefault();
 
+            // Build the email object for nodemailer
         const mailOptions = {
             from: $("#contact-email").val(),
-            to: $("#manager-email").val(),/* manager email inserted here */
+            to: $("#manager-email").text(),
             subject: $("#contact-name").val() + "is interested in a job on NextStep!",
             text: $("#contact-message").val()
         };
         
+        // send to server.js to sent the email 
         $.ajax({
             url: "/message",
             method: "POST",
@@ -176,6 +176,5 @@ $(document).ready(function () {
         })
         
     })
-    // +++++++++++++++
 
 })

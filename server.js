@@ -58,7 +58,6 @@ db.sequelize.sync({ force: false }).then(function () {
 // Nodemailer call
 
 app.post('/message', (req, res) => {
-
   transporter.sendMail(req.body, function (err, info) {
     if (err) {
       console.log(err);
