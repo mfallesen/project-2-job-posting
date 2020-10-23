@@ -45,6 +45,7 @@ module.exports = function (router) {
             // empty object to hold manager's info
             const manager = {}
             // add info from db query to manager obj
+            manager.id = managerInfo.id
             manager.first_name = managerInfo.first_name
             manager.last_name = managerInfo.last_name
             manager.email = managerInfo.email
@@ -53,18 +54,15 @@ module.exports = function (router) {
 
             // object to hold info of company manager works for
             const company = dbManager.Company.dataValues
-
-            // temp json for front-end team
-            // res.json({ manager: manager, company: company })
-
+            
             // render handlebars file with company and manager objects
             res.render('managerpage', {
                 manager: manager,
                 company: company
             })
         }).catch(err => {
-            // return status code 500 if other errors occur
-            res.status(500).end();
+            // return status code 422 if other errors occur
+            res.status(422).end();
         })
     });
 
