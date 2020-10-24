@@ -47,6 +47,10 @@
     display: none;
 }
 
+.card-header-title {
+    font-size: 30px;
+}
+
 
 /* use this for media breakpoints */
 
