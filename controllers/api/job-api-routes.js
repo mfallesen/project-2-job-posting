@@ -17,7 +17,7 @@ module.exports = function(router) {
             wage: wage,
             manager_id: manager_id
         }).then(function(newJob) {
-            res.status(200)
+           res.json(newJob.dataValues)
         })
     });
 

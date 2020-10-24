@@ -169,13 +169,16 @@ $(document).ready(function () {
     $(".job-submit").on("click", function() {
         const jobName = $('.jobtitleInput').val()
         const jobDescription = $('.jobdescriptionInput').val()
-        const jobType = $('.jobtypeInput').val()
+        const jobType = $('input[name="answer"]:checked').val()
         const jobPhone = $('.jobphoneInput').val()
         const jobWage = $('.jobwageInput').val()
+
+        console.log(jobType)
 
         if (
             !jobName ||
             !jobDescription ||
+            !jobType ||
             !jobPhone ||
             !jobWage
         ) {
@@ -190,6 +193,7 @@ $(document).ready(function () {
                 title: jobName,
                 description: jobDescription,
                 type: jobType,
+                wage: jobWage
             },
             statusCode: {
                 500: function() {
@@ -198,7 +202,7 @@ $(document).ready(function () {
             }
         }).done(function (response) {
             console.log('new job created')
-            window.location.href= "/manager/" + response.id + "/jobs"
+            window.location.href= "/manager/" + response.manager_id + "/jobs"
         })
     })
 
@@ -244,6 +248,7 @@ $(document).ready(function () {
         }).done(function (response) {
             location.reload();
         })
+    });
 
         // +++++++++++++++
         // Work In Progress
@@ -268,4 +273,3 @@ $(document).ready(function () {
         })
 
     })
-})
