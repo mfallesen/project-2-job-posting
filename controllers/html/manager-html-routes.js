@@ -52,7 +52,13 @@ module.exports = function (router) {
         db.Job.findAll({
             where: { manager_id: req.params.id }
         }).then(function(dbJobs) {
-            res.render('managerjobs', {jobs: dbJobs})
+            const jobs = []
+            
+            dbJobs.forEach(job => {
+                jobs.push(job.dataValues)
+            })
+            console.log(jobs)
+            res.render('managerjobs', {jobs: jobs})
         })
     });
 }
