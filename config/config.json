@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "scooby321",
+    "password": "password",
     "database": "job_app_db",
     "host": "localhost",
     "port": 3306,
