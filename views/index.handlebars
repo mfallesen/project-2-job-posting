@@ -166,6 +166,7 @@
                             {{!-- <input class="input companyInput" type="text" placeholder="Your company's name"> --}}
                             <div class="select">
                                 <select class='companyInput'>
+                                    <option selected hidden disabled>Select an option</option>
                                     {{#each companies}}
                                     <option value='{{id}}'>{{company_name}}</option>
                                     {{/each}}
