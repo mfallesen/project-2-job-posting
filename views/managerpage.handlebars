@@ -1,0 +1,155 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                    Profile
+                </a>
+
+                <a class="navbar-item" href="/job/create">
+                    Post a Job
+                </a>
+
+                <a class="navbar-item" href="/manager/{{manager.id}}/jobs">
+                    View Your Listings
+                </a>
+            </div>
+
+        
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign Out</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+<div class="container">
+    
+    <div class= "card">
+        <div class= "card-header-title">
+            Welcome
+        </div>
+
+        <div class= "user-profile">
+
+            <div class= "view-profile">
+                <p>First Name: {{manager.first_name}}</p>
+                <p>Last Name: {{manager.last_name}}</p>
+                <p>E-mail: {{manager.email}}</p>
+                <p>Phone: {{manager.phone}}</p>
+                <p>Company Name: {{company.company_name}}</p>
+                <p>Company Phone: {{company.phone}}</p>
+                <p>Biography: {{manager.bio}}</p>
+
+                <p>
+                     <button class="button is-primary edit-toggle">Edit Profile</button>
+                </p>
+
+
+            </div>
+
+            <div class= "edit-profile">
+
+                <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input firstNameInput" type="text" value={{manager.first_name}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input lastNameInput" type="text" value={{manager.last_name}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">E-mail</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-expanded">
+                        <p class="control is-expanded has-icons-left has-icons-right">
+                            <input class="input emailInput" type="email" value={{manager.email}}>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Phone</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-expanded">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <a class="button is-static">
+                                    +1
+                                </a>
+                            </p>
+                            <p class="control is-expanded">
+                                <input class="input phoneInput" type="tel" value={{manager.phone}}>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Bio</label>
+                    <div class="control">
+                        <textarea class="textarea bioInput" placeholder="Write a bio about yourself or your company here" value= {{manager.bio}}></textarea>
+                    </div>
+                </div>
+
+
+            <button class="button is-primary save-changes">Save Changes</button>
+
+            </div>
+
+
+
+           
+
+           
+            
+        </div>
+    </div>
+   
+ </div>

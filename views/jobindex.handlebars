@@ -1,0 +1,84 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                </a>
+
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+            
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Profile</strong>
+                            </a>
+                            <a class="button is-light">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+<div class="container">
+
+    <div id="job-header">
+        <h1>Job Index</h1>
+
+    <div class="dropdown is-hoverable">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Sort Jobs</span>
+                <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                <a href="/job/listings/date" class="dropdown-item">
+                    Recently Posted
+                 </a>
+                <a href="/job/listings/wage" class="dropdown-item">
+                    Wage
+                </a>
+                <a href="/job/listings/full-time" class="dropdown-item">
+                    Full-Time
+                </a>
+                <a href="/job/listings/part-time" class="dropdown-item">
+                    Part-Time
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="columns jobs-column">
+
+        {{#each jobs}}
+            {{> jobs/jobs}}
+        {{/each}}
+
+    </div>
+
+</div>
+
+
+
+<footer class="footer">
+    <div class="content has-text-centered">
+         <p>
+            Copyright 2020 by Team 2
+        </p>
+    </div>
+</footer>
