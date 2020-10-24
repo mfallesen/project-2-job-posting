@@ -4,7 +4,10 @@ module.exports = function(router) {
     // route to create a new job posting
     router.post('/api/job/create', function(req, res) {
         // grab and store values from req.body
-        const {title, description, type, wage, manager_id} = req.body
+        const { title, description, type, wage } = req.body
+
+        // grab manager id and company from db
+        const manager_id = req.session.manager.id
 
         // create new job in db
         db.Job.create({
@@ -14,7 +17,7 @@ module.exports = function(router) {
             wage: wage,
             manager_id: manager_id
         }).then(function(newJob) {
-            res.json(newJob)
+            res.status(200)
         })
     });
 
