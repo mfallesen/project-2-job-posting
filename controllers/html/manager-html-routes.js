@@ -7,7 +7,7 @@ module.exports = function (router) {
         // check if manager is currently logged in, allowing him access to his profile page
         if (!req.session.manager || req.session.manager.id != req.params.id) {
             // return redirect to landing page to stop running code
-            // return res.redirect('/')
+            return res.redirect('/')
         }
         // find the manager record in the managers table along with company info for that manager
         db.Manager.findOne({
@@ -34,7 +34,7 @@ module.exports = function (router) {
 
             // object to hold info of company manager works for
             const company = dbManager.Company.dataValues
-            
+
             // render handlebars file with company and manager objects
             res.render('managerpage', {
                 manager: manager,
@@ -48,17 +48,22 @@ module.exports = function (router) {
 
     // route for view manager's created job postings
     router.get('/manager/:id/jobs', function (req, res) {
+        // check if manager is currently logged in, allowing him access to his profile page
+        if (!req.session.manager || req.session.manager.id != req.params.id) {
+            // return redirect to landing page to stop running code
+            return res.redirect('/')
+        }
         // grab all jobs for that manager from db
         db.Job.findAll({
             where: { manager_id: req.params.id }
-        }).then(function(dbJobs) {
+        }).then(function (dbJobs) {
             const jobs = []
-            
+
             dbJobs.forEach(job => {
                 jobs.push(job.dataValues)
             })
             console.log(jobs)
-            res.render('managerjobs', {jobs: jobs})
+            res.render('managerjobs', { jobs: jobs })
         })
     });
 }
