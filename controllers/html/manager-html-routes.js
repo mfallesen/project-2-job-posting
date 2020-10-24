@@ -66,4 +66,23 @@ module.exports = function (router) {
             res.render('managerjobs', { jobs: jobs })
         })
     });
+
+    // route to redirect to manager's profile page from job listings page
+    router.get('/profile', function (req, res) {
+        console.log('\nget profile\n')
+        // check if manager is currently logged in
+        if (req.session.manager) {
+            // grab manager's id from session and redirect to their profile page
+            const manager_id = req.session.manager.id
+            res.redirect('/manager/' + manager_id)
+        // check if any user is currently logged in
+        } else if (req.session.user) {
+            // grab user's id from session and redirect to their profile page
+            const user_id = req.session.user.id
+            res.redirect('/user/' + user_id)
+        } else {
+            // if nobody is logged in, redirect to home page
+            res.redirect('/')
+        }
+    });
 }
