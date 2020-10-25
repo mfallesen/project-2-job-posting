@@ -218,17 +218,17 @@ $(document).ready(function () {
 
     })
 
-    $(".job-delete").on("click", function() {
-        jobId = $(this).attr("data-id");
+    // $(".job-delete").on("click", function() {
+    //     jobId = $(this).attr("data-id");
 
-        $.ajax({
-            url: "/api/job/" + jobId,
-            method: "DELETE"
-        }).done(function(response) {
-            console.log("job deleted");
-            location.href = "/manager/" + response.manager_id + "/jobs"
-        })  
-    })
+    //     $.ajax({
+    //         url: "/api/job/" + jobId,
+    //         method: "DELETE"
+    //     }).done(function(response) {
+    //         console.log("job deleted");
+    //         location.href = "/manager/" + response.manager_id + "/jobs"
+    //     })  
+    // })
 
     $(".edit-toggle").on("click", function () {
         $(".view-profile").attr("style", "display: none")
