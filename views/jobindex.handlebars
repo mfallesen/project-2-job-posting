@@ -17,9 +17,18 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-light">
+                            {{#if manager.isLoggedIn}}
+                            <a class="button is-light" href='/manager/{{manager.id}}'>
+                                My Profile
+                            </a>
+                            <a class="button is-light" href='/logout'>
+                                Logout
+                            </a>
+                            {{else}}
+                            <a class="button is-light" href='/'>
                                 Log in
                             </a>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

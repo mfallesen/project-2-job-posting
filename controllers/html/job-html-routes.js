@@ -75,6 +75,21 @@ module.exports = function (router) {
                 break;
         }
 
+        // check if manager is logged in for displaying login/profile button
+        if (req.session.manager) {
+            console.log('hi')
+            console.log(req.session.manager.id)
+            var manager = {
+                isLoggedIn: true,
+                id: req.session.manager.id
+            }
+        } else {
+            console.log('not logged in')
+            var manager = {
+                isLoggedIn: false
+            }
+        }
+
         // if user wants wants to sort jobs based on date or wage, query all jobs and plug in sort array from above
         if (req.params.filter === 'date' || req.params.filter === 'wage') {
             db.Job.findAll({
@@ -142,7 +157,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
