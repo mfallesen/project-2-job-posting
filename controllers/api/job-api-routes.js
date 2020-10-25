@@ -45,4 +45,16 @@ module.exports = function(router) {
             res.status(422).end();
         })
     });
+
+    // route to delete an existing job
+    router.delete('/api/job/:id', function(req, res) {
+        // grab job id from url
+        const jobId = req.params.id
+        // delete job from db
+        db.Job.destroy({
+            where: {id: jobId}
+        }).then(function() {
+            res.status(200).end();
+        })
+    });
 }
