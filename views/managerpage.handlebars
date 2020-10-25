@@ -46,51 +46,61 @@
 <div class="container">
     
         <div class= "card-header-title">
-            Welcome, {{manager.first_name}} {{manager.last_name}}
+            Welcome, {{manager.first_name}} {{manager.last_name}}  
+            
+            <div class="editbutton">
+                    <button class="button is-primary edit-toggle">Edit Profile</button>
+
+                </div>
         </div>
 
         <div class= "user-profile">
 
             <div class= "view-profile">
-                    <div class="managername">
+
+                <div class="columns">
+
+                 <div class="column is-4"> 
+
+                <div class="profile-category">
                     {{manager.first_name}} {{manager.last_name}}
                 </div>
 
-                <div class="manageremail">
+                <div class="profile-category">
                     {{manager.email}}
                 </div>
 
-                <div class="managerphone">
+                <div class="profile-category">
                     {{manager.phone}}
                 </div>
 
-                <div class="managercompany">
+                <div class="profile-category">
                     <strong>Company Information:</strong>
 
-                    <div class="companyname">
+                    <div class="profile-category">
                         {{company.company_name}}
                     </div>
 
-                    <div class="companyphone">
+                    <div class="profile-category">
                         {{company.phone}}
                     </div>
                 </div>
+            </div>  
 
-                
+                <div class="column is-8">
 
                 <div class="bio">
                     <h2><strong>About:</strong></h2>
 
                     {{manager.bio}}
                 </div>
+            </div>
 
-
-                <div class="editbutton">
-                    <button class="button is-primary edit-toggle">Edit Profile</button>
-
-                </div>
+                
                      
 
+
+            </div>
 
             </div>
 

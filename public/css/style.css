@@ -1,8 +1,8 @@
 .hero {
-    background-image: url('../images/hero.jpg');
+    background-image: url('../images/hero.png');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 600px;
     color:#000c20;
 }
 .navbar {
@@ -51,6 +51,9 @@
     font-size: 30px;
 }
 
+.profile-category {
+    padding: 5px;
+}
 
 /* use this for media breakpoints */
 
