@@ -110,7 +110,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
@@ -134,7 +137,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
