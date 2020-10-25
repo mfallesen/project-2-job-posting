@@ -21,12 +21,14 @@ const PORT = process.env.PORT || 8080;
 
 const db = require("./models")
 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -48,7 +50,7 @@ require('./controllers/html/job-html-routes')(app);
 require('./controllers/html/manager-html-routes')(app);
 require('./controllers/html/user-html-routes')(app);
 
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: true }).then(function () {
 
   app.listen(PORT, function () {
     console.log('App listening on PORT: ' + PORT);
