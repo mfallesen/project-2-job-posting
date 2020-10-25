@@ -48,46 +48,61 @@
         <div class= "card-header-title">
             Welcome, {{manager.first_name}} {{manager.last_name}}  
             
-            <div class="editbutton">
-                    <button class="button is-primary edit-toggle">Edit Profile</button>
-
-                </div>
         </div>
 
         <div class= "user-profile">
 
             <div class= "view-profile">
 
+            <div class= "card manager-profile">
                 <div class="columns">
+                        <div class="column is-10 is-offset-1 manager-title">
+                            Your Manager Profile
+                        </div>
+                    </div>
 
-                 <div class="column is-4"> 
+        <div class="columns">
 
-                <div class="profile-category">
+            <div class="column is-4 is-offset-1"> 
+
+                <div class="profile-name">
                     {{manager.first_name}} {{manager.last_name}}
                 </div>
 
-                <div class="profile-category">
+                <div class="profile-category has-icons-left">
+                    <span class="icon is-small is-left">
+                         <i class="fas fa-envelope"></i>
+                    </span>
                     {{manager.email}}
                 </div>
 
-                <div class="profile-category">
+                <div class="profile-category has-icons-left">
+                     <span class="icon is-small is-left">
+                         <i class="fas fa-phone"></i>
+                    </span>
                     {{manager.phone}}
                 </div>
 
                 <div class="profile-category">
                     <strong>Company Information:</strong>
+                </div>
 
-                    <div class="profile-category">
+                    <div class="profile-category has-icons-left">
+                    <span class="icon is-small is-left">
+                         <i class="fas fa-building"></i>
+                    </span>
                         {{company.company_name}}
                     </div>
 
-                    <div class="profile-category">
+                    <div class="profile-category has-icons-left">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-phone"></i>
+                        </span>
                         {{company.phone}}
                     </div>
-                </div>
             </div>  
 
-                <div class="column is-8">
+            <div class="column is-6">
 
                 <div class="bio">
                     <h2><strong>About:</strong></h2>
@@ -95,14 +110,17 @@
                     {{manager.bio}}
                 </div>
             </div>
+         </div>
 
-                
-                     
-
-
+         <div class= "columns">
+            <div class= "column is-12">
+                 <div class="editbutton">
+                    <button class="button is-primary edit-toggle">Edit Profile</button>
+                </div>
             </div>
-
-            </div>
+        </div>
+        </div>
+    </div>
 
             <div class= "edit-profile">
 
@@ -170,7 +188,7 @@
             <div class="field">
                 <label class="label">Bio</label>
                     <div class="control">
-                        <textarea class="textarea bioInput" placeholder="Write a bio about yourself or your company here" value= {{manager.bio}}></textarea>
+                        <textarea class="textarea bioInput" placeholder="Write a bio about yourself or your company here">{{manager.bio}}</textarea>
                     </div>
                 </div>
 

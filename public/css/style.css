@@ -66,7 +66,11 @@
     margin-top: 20px;
 }
 
-
+.editbutton {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
 
 .modal-label {
     color: white;
@@ -86,11 +90,23 @@
 }
 
 .card-header-title {
-    font-size: 30px;
+    font-size: 25px;
+}
+
+.manager-title {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 25px;
 }
 
 .profile-category {
     padding: 5px;
+}
+
+.profile-name {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 /* Job Listing Page Styling */
@@ -113,6 +129,11 @@
 }
 /* use this for media breakpoints */
 
-/* @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+
+    .manager-profile {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
     
-  } */
+  }
