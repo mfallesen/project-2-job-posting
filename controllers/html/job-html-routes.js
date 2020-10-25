@@ -15,10 +15,15 @@ function modifyJobArray(dbJobs) {
             id: id,
             title: title,
             description: description,
-            type: type,
             wage: wage,
             created_at: createdAt,
             updated_at: updatedAt
+        }
+        // add full words for job type
+        if (job.type === 'ft') {
+            jobInfo.type = 'Full Time'
+        } else {
+            job.type = 'Part Time'
         }
         // add manager object to job obj
         jobInfo.manager = {
