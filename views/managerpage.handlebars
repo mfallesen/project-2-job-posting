@@ -1,7 +1,11 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://next-step-employment-app.herokuapp.com/">
+<<<<<<< HEAD
+                    <img src="/images/Logo.png" width="112" height="28">
+=======
                     <img src="../images/Logo.png" width="112" height="28">
+>>>>>>> development
                 </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -45,25 +49,51 @@
 
 <div class="container">
     
-    <div class= "card">
         <div class= "card-header-title">
-            Welcome
+            Welcome, {{manager.first_name}} {{manager.last_name}}
         </div>
 
         <div class= "user-profile">
 
             <div class= "view-profile">
-                <p>First Name: {{manager.first_name}}</p>
-                <p>Last Name: {{manager.last_name}}</p>
-                <p>E-mail: {{manager.email}}</p>
-                <p>Phone: {{manager.phone}}</p>
-                <p>Company Name: {{company.company_name}}</p>
-                <p>Company Phone: {{company.phone}}</p>
-                <p>Biography: {{manager.bio}}</p>
+                    <div class="managername">
+                    {{manager.first_name}} {{manager.last_name}}
+                </div>
 
-                <p>
-                     <button class="button is-primary edit-toggle">Edit Profile</button>
-                </p>
+                <div class="manageremail">
+                    {{manager.email}}
+                </div>
+
+                <div class="managerphone">
+                    {{manager.phone}}
+                </div>
+
+                <div class="managercompany">
+                    <strong>Company Information:</strong>
+
+                    <div class="companyname">
+                        {{company.company_name}}
+                    </div>
+
+                    <div class="companyphone">
+                        {{company.phone}}
+                    </div>
+                </div>
+
+                
+
+                <div class="bio">
+                    <h2><strong>About:</strong></h2>
+
+                    {{manager.bio}}
+                </div>
+
+
+                <div class="editbutton">
+                    <button class="button is-primary edit-toggle">Edit Profile</button>
+
+                </div>
+                     
 
 
             </div>
@@ -152,4 +182,3 @@
         </div>
     </div>
    
- </div>
