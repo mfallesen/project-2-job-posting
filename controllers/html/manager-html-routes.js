@@ -60,6 +60,12 @@ module.exports = function (router) {
             const jobs = []
 
             dbJobs.forEach(job => {
+                // change ft/pt from db to full time/part time
+                if (job.dataValues.type === 'ft') {
+                    job.dataValues.type = 'Full Time'
+                } else {
+                    job.dataValues.type = 'Part Time'
+                }
                 jobs.push(job.dataValues)
             })
             console.log(jobs)
