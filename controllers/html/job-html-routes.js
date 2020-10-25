@@ -15,10 +15,15 @@ function modifyJobArray(dbJobs) {
             id: id,
             title: title,
             description: description,
-            type: type,
             wage: wage,
             created_at: createdAt,
             updated_at: updatedAt
+        }
+        // add full words for job type
+        if (job.type === 'ft') {
+            jobInfo.type = 'Full Time'
+        } else {
+            job.type = 'Part Time'
         }
         // add manager object to job obj
         jobInfo.manager = {
@@ -70,6 +75,21 @@ module.exports = function (router) {
                 break;
         }
 
+        // check if manager is logged in for displaying login/profile button
+        if (req.session.manager) {
+            console.log('hi')
+            console.log(req.session.manager.id)
+            var manager = {
+                isLoggedIn: true,
+                id: req.session.manager.id
+            }
+        } else {
+            console.log('not logged in')
+            var manager = {
+                isLoggedIn: false
+            }
+        }
+
         // if user wants wants to sort jobs based on date or wage, query all jobs and plug in sort array from above
         if (req.params.filter === 'date' || req.params.filter === 'wage') {
             db.Job.findAll({
@@ -90,7 +110,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
@@ -114,7 +137,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
@@ -137,7 +163,10 @@ module.exports = function (router) {
                 const jobs = modifyJobArray(dbJobs)
 
                 // render jobs handlebars with jobs array
-                res.render('jobindex', { jobs: jobs })
+                res.render('jobindex', {
+                    jobs: jobs,
+                    manager: manager
+                })
             }).catch(function (err) {
                 // if any other error occurs, send status code 500
                 return res.status(422).end();
@@ -147,7 +176,8 @@ module.exports = function (router) {
 
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
-        res.render('jobpost')
+        const manager = req.session.manager
+        res.render('jobpost', manager)
     });
 
     // route to render page for updating an existing job posting
