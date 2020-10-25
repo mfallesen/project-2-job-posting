@@ -1,16 +1,16 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    <img src="/images/Logo.png" width="112" height="28">
+                    <img src="/images/Logo.png" width="150" height="28">
                 </a>
 
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
             <div id="navbarBasicExample" class="navbar-menu">
             
@@ -33,36 +33,39 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </div>
+</nav>
 
 <div class="container">
 
     <div id="job-header">
-        <h1>Job Index</h1>
+        <h1><strong>Who's Hiring?</strong></h1>
+        <p>These companies and organizations are currently looking for help</p>
 
-    <div class="dropdown is-hoverable">
-        <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>Sort Jobs</span>
-                <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-            </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-                <a href="/job/listings/date" class="dropdown-item">
-                    Recently Posted
-                 </a>
-                <a href="/job/listings/wage" class="dropdown-item">
-                    Wage
-                </a>
-                <a href="/job/listings/full-time" class="dropdown-item">
-                    Full-Time
-                </a>
-                <a href="/job/listings/part-time" class="dropdown-item">
-                    Part-Time
-                </a>
+        <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+                <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Sort Jobs</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    <a href="/job/listings/date" class="dropdown-item">
+                        Recently Posted
+                    </a>
+                    <a href="/job/listings/wage" class="dropdown-item">
+                        Wage
+                    </a>
+                    <a href="/job/listings/full-time" class="dropdown-item">
+                        Full-Time
+                    </a>
+                    <a href="/job/listings/part-time" class="dropdown-item">
+                        Part-Time
+                    </a>
                 </div>
             </div>
         </div>
@@ -72,7 +75,7 @@
     <div class="columns jobs-column">
 
         {{#each jobs}}
-            {{> jobs/jobs}}
+        {{> jobs/jobs}}
         {{/each}}
 
     </div>
@@ -83,7 +86,7 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-         <p>
+        <p>
             Copyright 2020 by Team 2
         </p>
     </div>

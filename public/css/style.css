@@ -1,3 +1,46 @@
+/* Shared Component Styling */
+.button {
+    background-color: #63a0b7;
+    color: #000c20;
+}
+
+.is-primary {
+    background-color: #97d9d9;
+    color: #000c20;
+}
+
+.button.is-primary {
+    background-color: #97d9d9;
+    color: #000c20;
+}
+.button.is-primary:hover {
+    background-color: #63a0b7;
+}
+
+.footer {
+    background-color: #000c20;
+    color:rgb(211, 211, 211);
+    font-weight: bold;
+}
+
+.delete {
+    background-color: #c9072a;
+}
+
+.navbar {
+    background-color: #97d9d9;
+    height: 80px;
+}
+
+
+.panel-heading {
+    background-color: rgb(211, 211, 211, 0.8);
+}
+
+.dropdown-content {
+    background-color: rgb(211, 211, 211, 0.8);
+}
+/* Indexpage styling */
 .hero {
     background-image: url('../images/hero.png');
     background-repeat: no-repeat;
@@ -5,30 +48,25 @@
     height: 600px;
     color:#000c20;
 }
-.navbar {
-    background-color: #97d9d9;
 
-}
 .title {
     color:#000c20;
 }
+
 .subtitle {
     color:#000c20;
 }
 
-#company-login-div {
-    border: 2px solid #000c20;
-    border-radius: 5px;
-}
-.login-div {
-    background-color: #97d9d9;
+#hero-text {
+    background-color: rgb(211, 211, 211, 0.8);
     color: #000c20;
+}
 
+#company-login-div {
+    margin-top: 20px;
 }
-.button {
-    background-color: #63a0b7;
-    color: white;
-}
+
+
 
 .modal-label {
     color: white;
@@ -55,6 +93,24 @@
     padding: 5px;
 }
 
+/* Job Listing Page Styling */
+#job-header {
+    text-align: center;
+}
+
+.dropdown {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.job-description-short {
+    height: 48px;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
 /* use this for media breakpoints */
 
 /* @media only screen and (max-width: 768px) {
