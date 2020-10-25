@@ -85,6 +85,10 @@
     display: none;
 }
 
+.card-header-title {
+    font-size: 30px;
+}
+
 
 /* Job Listing Page Styling */
 #job-header {

@@ -218,6 +218,18 @@ $(document).ready(function () {
 
     })
 
+    $(".job-delete").on("click", function() {
+        jobId = $(this).attr("data-id");
+
+        $.ajax({
+            url: "/api/job/" + jobId,
+            method: "DELETE"
+        }).done(function(response) {
+            console.log("job deleted");
+            location.reload();
+        })  
+    })
+
     $(".edit-toggle").on("click", function () {
         $(".view-profile").attr("style", "display: none")
         $(".edit-profile").attr("style", "display: block")
