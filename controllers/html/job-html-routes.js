@@ -152,7 +152,8 @@ module.exports = function (router) {
 
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
-        res.render('jobpost')
+        const manager = req.session.manager
+        res.render('jobpost', manager)
     });
 
     // route to render page for updating an existing job posting
