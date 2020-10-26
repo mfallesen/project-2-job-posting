@@ -16,12 +16,12 @@ module.exports = function(router) {
             description: description,
             type: type,
             wage: wage,
-            manager_id: manager_id,
-            benefits: [
-                
-            ]
-        }).then(function(newJob) {
+            manager_id: manager_id
+        }).then(function(newJob) {            
             // add each of the benefits to the db
+            benefits.forEach(benefit => {
+                newJob.addBenefit(benefit)
+            })
 
            res.json(newJob.dataValues)
         })
