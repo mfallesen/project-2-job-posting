@@ -171,6 +171,9 @@
     max-width: 100%;
 }
 
+#contact-form {
+    width: 95%;
+}
 /* Manager Job Page Styling */
 
 .managerjob-buttons {
