@@ -5,7 +5,6 @@ module.exports = function(router) {
     router.post('/api/job/create', function(req, res) {
         // grab and store values from req.body
         const { title, description, type, wage, benefits } = req.body
-        console.log(benefits)
 
         // grab manager id and company from db
         const manager_id = req.session.manager.id
@@ -23,7 +22,7 @@ module.exports = function(router) {
                 newJob.addBenefit(benefit)
             })
 
-           res.json(newJob.dataValues)
+           res.json(newJob)
         })
     });
 

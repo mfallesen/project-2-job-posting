@@ -223,7 +223,7 @@ $(document).ready(function () {
             }
         }).done(function (response) {
             console.log('new job created')
-            window.location.href= "/manager/" + response.manager_id + "/jobs"
+            window.location.href= "/manager/jobs"
         })
     })
 
