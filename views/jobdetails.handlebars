@@ -1,101 +1,105 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    <img src="/images/Logo.png" width="112" height="28">
-                </a>
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="/images/Logo.png" width="112" height="28">
+        </a>
 
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-            
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary">
-                                <strong>Profile</strong>
-                            </a>
-                            <a class="button is-light">
-                                Log in
-                            </a>
-                        </div>
-                    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Profile</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
                 </div>
             </div>
-        </nav>
+        </div>
+    </div>
+</nav>
 
 <div class="container">
 
-    <div class= "card">
+    <div id="job-detail-card" class="card">
 
-        <div class= "card-header-title">
-             <h1>{{job.title}}</h1>
+        <div id="job-title" class="card-header-title">
+            <h1><strong>{{job.title}}</strong></h1>
         </div>
+        <div id="job-info">
+            <p><strong> Company:</strong> <span>{{company.company_name}}</span></p>
+    <p><strong> They are looking for:</strong></p>
+            <p> <span>{{job.description}}</span></p>
 
-        <p>Company: {{company.company_name}}</p>
+            <p> <strong>Type of work:</strong> <span>{{job.type}}</span></p>
 
-        <p>{{job.description}}</p>
+            <p> <strong>Compensation:</strong> <span>{{job.wage}}</span></p>
+        </div>
+        <hr>
+        <div id="job-manager">
+            <h2><strong>Contact Information</strong></h2>
+            <p>Want more details or to be considered for this position? Get in touch below!</p>
 
-        <p>Type: {{job.type}}</p>
+            <p><strong>Manager:</strong> <span id="manager-name-first">{{manager.first_name}}</span> <span
+                    id="manager-name-last">{{manager.last_name}}</span></p>
 
-        <p>Wage: {{job.wage}}</p>
+            <p><strong>E-mail:</strong> <span id="manager-email">{{manager.email}}</span></p>
 
-        <h2>Contact Information</h2>
+            <p><strong>Phone:</strong> <span id="manager-phone">{{manager.phone}}</span></p>
 
-        <p>Manager: <span id="manager-name-first">{{manager.first_name}}</span> <span id="manager-name-last">{{manager.last_name}}</span></p>
-
-        <p>E-mail: <span id="manager-email">{{manager.email}}</span></p>
-
-        <p>Phone: <span id="manager-phone" >{{manager.phone}}</span></p>
-
-        <button class= "button contact-manager">Contact Manager</button>
-
+            <button class="button contact-manager">Contact Manager</button>
+        </div>
     </div>
 
     <div class="modal">
         <div class="modal-background"></div>
         <div id="contact-form" class="modal-content">
-        <form action="" method="post" autocomplete="on">
-            <div class="field">
-                <div class="control">
-                    <label class="label modal-label">Name:</label>
-                    <input  id="contact-name" class="input" type="text" placeholder="Normal input">
+            <form action="" method="post" autocomplete="on">
+                <div class="field">
+                    <div class="control">
+                        <label class="label modal-label">Name:</label>
+                        <input id="contact-name" class="input" type="text" placeholder="Normal input">
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <label class="label modal-label">Email:</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input id="contact-email"class="input" type="email" placeholder="Email input">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
+                <div class="field">
+                    <label class="label modal-label">Email:</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="contact-email" class="input" type="email" placeholder="Email input">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
 
+                    </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label class="label modal-label">Message</label>
-                <div class="control">
-                    <textarea id="contact-message" class="textarea" placeholder="Textarea"></textarea>
+                <div class="field">
+                    <label class="label modal-label">Message</label>
+                    <div class="control">
+                        <textarea id="contact-message" class="textarea" placeholder="Ready for your Next Step?"></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <div class="field is-grouped">
-                <div class="control">
-                    <button id="contact-send" class="button is-link" type="submit">Submit</button>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button id="contact-send" class="button is-link" type="submit">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button id="contact-close" class="button is-link is-light">Cancel</button>
+                    </div>
                 </div>
-                <div class="control">
-                    <button id="contact-close" class="button is-link is-light">Cancel</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
 
 </div>
