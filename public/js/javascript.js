@@ -25,6 +25,10 @@ $(document).ready(function () {
         $(".modal").addClass("is-active");
     })
 
+    $(document).on("click", ".back-btn", function() {
+        location.href= "/job/listings";
+    })
+
 
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
@@ -167,7 +171,6 @@ $(document).ready(function () {
     })
 
     $(".navbar-login").on("click", function() {
-        window.location.href="/"
         $("#login-modal").addClass("is-active")
     })
 
@@ -280,16 +283,14 @@ $(document).ready(function () {
         })
     });
 
-        // +++++++++++++++
-        // Work In Progress
-        $("#contact-send").addEventListener("click", function (event) {
+        $("#contact-send").on("click", function (event) {
             event.preventDefault();
 
             // Build the email object for nodemailer
             const mailOptions = {
                 from: $("#contact-email").val(),
                 to: $("#manager-email").text(),
-                subject: $("#contact-name").val() + "is interested in a job on NextStep!",
+                subject: $("#contact-name").val() + " is interested in a job on NextStep!",
                 text: $("#contact-message").val()
             };
 
