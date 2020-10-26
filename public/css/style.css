@@ -16,11 +16,36 @@
 .button.is-primary:hover {
     background-color: #63a0b7;
 }
+.button.is-link {
+    background-color: #97d9d9;
+    color: #000c20;
+}
+
+.button.is-link:hover {
+    background-color: #63a0b7;
+    color: #000c20;
+}
+.button.is-link.is-light {
+    
+    color: #000c20;
+}
+
+.button.is-link.is-light:hover {
+    
+    color: #000c20;
+}
+
+.modal-close:hover {
+    background-color: #c9072a;
+}
 
 .footer {
     background-color: #000c20;
     color:rgb(211, 211, 211);
     font-weight: bold;
+    bottom: 0;
+    overflow: auto;
+    width: 100%;
 }
 
 .delete {
@@ -32,14 +57,27 @@
     height: 80px;
 }
 
+.page-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 20px;
+}
 
 .panel-heading {
-    background-color: rgb(211, 211, 211, 0.8);
+    background-color: #000c20;
+    color: white;
 }
 
 .dropdown-content {
     background-color: rgb(211, 211, 211, 0.8);
 }
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 /* Indexpage styling */
 .hero {
     background-image: url('../images/hero.png');
@@ -66,12 +104,6 @@
     margin-top: 20px;
 }
 
-.editbutton {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-
 .modal-label {
     color: white;
 }
@@ -79,26 +111,29 @@
 .jobs-column {
     flex-wrap: wrap;
     max-width: 90%;
+    padding-left: 80px;
 }
 
 .companyForm {
     display: none;
 }
 
+/* User Profile Page Styling */
+
 .edit-profile {
     display: none;
+}
+
+.editbutton {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 .manager-welcome {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 15px;
-}
-
-.manager-title {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 25px;
 }
 
 .profile-category {
@@ -114,6 +149,7 @@
 /* Job Listing Page Styling */
 #job-header {
     text-align: center;
+    font-size: 30px;
 }
 
 .dropdown {
@@ -129,6 +165,60 @@
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+
+.jobs-column {
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+/* Manager Job Page Styling */
+
+.managerjob-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* JOb detail styling */
+#job-detail-card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#job-detail-card p {
+    padding-top: 10px;
+}
+
+
+
+#job-title {
+    font-size: 25px;
+
+}
+
+#job-info {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#job-manager {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+#job-manager h2{
+    font-size: 20px;
+}
+#job-manager button {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.details-button {
+    background-color: #97d9d9;
+}
 /* use this for media breakpoints */
 
 @media only screen and (max-width: 768px) {
@@ -137,5 +227,7 @@
         margin-left: 10px;
         margin-right: 10px;
     }
-    
+    #job-detail-card {
+        width: 90%;
+    }
   }

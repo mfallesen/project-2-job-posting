@@ -25,6 +25,10 @@ $(document).ready(function () {
         $(".modal").addClass("is-active");
     })
 
+    $(document).on("click", ".back-btn", function() {
+        location.href= "/job/listings";
+    })
+
 
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
@@ -166,6 +170,10 @@ $(document).ready(function () {
         }
     })
 
+    $(".navbar-login").on("click", function() {
+        $("#login-modal").addClass("is-active")
+    })
+
     $("#contact-close").on("click", function () {
         $(".modal").removeClass("is-active")
     })
@@ -180,8 +188,12 @@ $(document).ready(function () {
         const jobType = $('input[name="answer"]:checked').val()
         const jobPhone = $('.jobphoneInput').val()
         const jobWage = $('.jobwageInput').val()
-
-        console.log(jobType)
+        const benefits = []
+        // for each checked benefit, add if to the benefits array
+        $.each($('input[name="benefit"]:checked'), function() {
+            // push the value, which represents the benefit's index in the db
+            benefits.push($(this).val())
+        })
 
         if (
             !jobName ||
@@ -201,7 +213,8 @@ $(document).ready(function () {
                 title: jobName,
                 description: jobDescription,
                 type: jobType,
-                wage: jobWage
+                wage: jobWage,
+                benefits: benefits
             },
             statusCode: {
                 500: function() {
@@ -222,7 +235,7 @@ $(document).ready(function () {
 
     $(".job-edit").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href = "/job/update/" + jobId;
+        location.href = "/job/update/" + jobId;
 
     })
 
@@ -270,16 +283,14 @@ $(document).ready(function () {
         })
     });
 
-        // +++++++++++++++
-        // Work In Progress
-        $("#contact-send").addEventListener("click", function (event) {
+        $("#contact-send").on("click", function (event) {
             event.preventDefault();
 
             // Build the email object for nodemailer
             const mailOptions = {
                 from: $("#contact-email").val(),
                 to: $("#manager-email").text(),
-                subject: $("#contact-name").val() + "is interested in a job on NextStep!",
+                subject: $("#contact-name").val() + " is interested in a job on NextStep!",
                 text: $("#contact-message").val()
             };
 
@@ -293,3 +304,4 @@ $(document).ready(function () {
         })
 
     })
+
