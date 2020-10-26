@@ -1,12 +1,12 @@
 
 $(document).ready(function () {
 
-    $(".navbar-burger").click(function() {
+    $(".navbar-burger").click(function () {
 
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         $(".navbar-burger").toggleClass("is-active");
         $(".navbar-menu").toggleClass("is-active");
-  
+
     });
 
     $(document).on("click", "#viewjobs", function () {
@@ -81,32 +81,32 @@ $(document).ready(function () {
                     phone: companyPhone,
                 },
                 statusCode: {
-                    500: function() {
+                    500: function () {
                         // company with same name already exists
                     },
-                    422: function() {
+                    422: function () {
                         // data sent can not be parsed by server
                     }
                 }
-                }).then(function(response) {
-                    // set company id to id of new company
-                    newAccountObj.company_id = response.id
-                    // now make an ajax call to make the new manager
-                    $.ajax({
-                        url: '/manager/create',
-                        method: "POST",
-                        data: newAccountObj,
-                        statusCode: {
-                            401: function() {
-                                // account with same email already exists
-                                alert('Email already taken')
-                            }
+            }).then(function (response) {
+                // set company id to id of new company
+                newAccountObj.company_id = response.id
+                // now make an ajax call to make the new manager
+                $.ajax({
+                    url: '/manager/create',
+                    method: "POST",
+                    data: newAccountObj,
+                    statusCode: {
+                        401: function () {
+                            // account with same email already exists
+                            alert('Email already taken')
                         }
-                    }).then(function(response) {
-                        // if manager is successfully created, redirect to profile page
-                        window.location.href = '/manager/' + response.id
-                    })
+                    }
+                }).then(function (response) {
+                    // if manager is successfully created, redirect to profile page
+                    window.location.href = '/manager/' + response.id
                 })
+            })
         } else {
             // if user is not making a new company, make normal ajax call to create new user
             $.ajax({
@@ -170,7 +170,12 @@ $(document).ready(function () {
         }
     })
 
+<<<<<<< HEAD
+    $(".navbar-login").on("click", function () {
+        window.location.href = "/"
+=======
     $(".navbar-login").on("click", function() {
+>>>>>>> development
         $("#login-modal").addClass("is-active")
     })
 
@@ -182,7 +187,7 @@ $(document).ready(function () {
         $(".modal").removeClass("is-active")
     })
 
-    $(".job-submit").on("click", function() {
+    $(".job-submit").on("click", function () {
         const jobName = $('.jobtitleInput').val()
         const jobDescription = $('.jobdescriptionInput').val()
         const jobType = $('input[name="answer"]:checked').val()
@@ -204,7 +209,7 @@ $(document).ready(function () {
         ) {
             // return to avoid running ajax request
             return alert('all fields are required')
-        } 
+        }
 
         $.ajax({
             url: '/api/job/create',
@@ -217,13 +222,13 @@ $(document).ready(function () {
                 benefits: benefits
             },
             statusCode: {
-                500: function() {
+                500: function () {
                     alert("something weird happened")
                 }
             }
         }).done(function (response) {
             console.log('new job created')
-            window.location.href= "/manager/" + response.manager_id + "/jobs"
+            window.location.href = "/manager/" + response.manager_id + "/jobs"
         })
     })
 
@@ -239,16 +244,16 @@ $(document).ready(function () {
 
     })
 
-    $(".job-delete").on("click", function() {
+    $(".job-delete").on("click", function () {
         jobId = $(this).attr("data-id");
 
         $.ajax({
             url: "/api/job/" + jobId,
             method: "DELETE"
-        }).done(function(response) {
+        }).done(function (response) {
             console.log("job deleted");
             location.reload();
-        })  
+        })
     })
 
     $(".edit-toggle").on("click", function () {
@@ -283,25 +288,33 @@ $(document).ready(function () {
         })
     });
 
-        $("#contact-send").on("click", function (event) {
-            event.preventDefault();
+    $("#contact-send").on("click", function (event) {
+        event.preventDefault();
 
-            // Build the email object for nodemailer
-            const mailOptions = {
-                from: $("#contact-email").val(),
-                to: $("#manager-email").text(),
-                subject: $("#contact-name").val() + " is interested in a job on NextStep!",
-                text: $("#contact-message").val()
-            };
+        // Build the email object for nodemailer
+        const mailOptions = {
+            from: $("#contact-email").val(),
+            to: $("#manager-email").text(),
+            subject: $("#contact-name").val() + " is interested in a job on NextStep!",
+            text: $("#contact-message").val()
+        };
 
-            // send to server.js to sent the email 
-            $.ajax({
-                url: "/message",
-                method: "POST",
-                data: mailOptions,
-            })
-
+        // send to server.js to sent the email 
+        $.ajax({
+            url: "/message",
+            method: "POST",
+            data: mailOptions,
+            success: function() {
+                $("#email-sent").text(`Your message is on the way!`);
+            },
+            statusCode: {
+                422: function() {
+                    alert("oops Something went wrong")
+                },
+            }
         })
 
     })
+
+})
 
