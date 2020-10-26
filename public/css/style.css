@@ -153,7 +153,6 @@
    -webkit-box-orient: vertical;
 }
 
-<<<<<<< HEAD
 .jobs-column {
     flex-wrap: wrap;
     max-width: 100%;
@@ -167,7 +166,6 @@
 }
 
 
-=======
 /* JOb detail styling */
 #job-detail-card {
     width: 50%;
@@ -205,7 +203,6 @@
     margin-right: auto;
     margin-bottom: 10px;
 }
->>>>>>> development
 /* use this for media breakpoints */
 
 @media only screen and (max-width: 768px) {
