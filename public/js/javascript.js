@@ -170,12 +170,7 @@ $(document).ready(function () {
         }
     })
 
-<<<<<<< HEAD
-    $(".navbar-login").on("click", function () {
-        window.location.href = "/"
-=======
     $(".navbar-login").on("click", function() {
->>>>>>> development
         $("#login-modal").addClass("is-active")
     })
 
