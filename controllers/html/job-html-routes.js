@@ -177,7 +177,7 @@ module.exports = function (router) {
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
         // grab all benefits from db
-        db.Benefit.findAll({}).then(function(dbBenefits) {
+        db.Benefit.findAll({}).then(function (dbBenefits) {
             const benefits = []
             // modify benefits from db into a more readable format for front-end
             dbBenefits.forEach(benefit => {
@@ -214,7 +214,7 @@ module.exports = function (router) {
                 // return redirect to landing page to stop running code
                 // return res.redirect('/')
             }
-            
+
             // if id does not exist in jobs table, return status code 404
             if (!dbJob) {
                 return res.status(404).send('Job not found')
@@ -234,7 +234,7 @@ module.exports = function (router) {
                 job.isFullTime = false
             }
             console.log(job)
-            
+
             const manager = dbJob.Manager.dataValues
             const company = manager.Company.dataValues
 
@@ -262,16 +262,18 @@ module.exports = function (router) {
         // get job from db
         db.Job.findOne({
             where: { id: req.params.id },
-            include: {
-                model: db.Manager,
-                include: db.Company
-            }
+            include: [
+                db.Benefit,
+                {
+                    model: db.Manager,
+                    include: db.Company
+                }]
         }).then(function (dbJob) {
             // if no job is found, status 404
             if (!dbJob) {
                 return res.status(404).send('No job found').end();
             }
-
+            
             // grab values from db job
             const { id, title, description, type, wage, Manager: managerObj } = dbJob
             const { id: manager_id, first_name, last_name, email, phone, Company } = managerObj
@@ -297,12 +299,19 @@ module.exports = function (router) {
                 company_name,
                 phone: company_phone
             }
-            // res.json({job, manager, company})
+            // array to hold benefits for the job
+            const benefits = []
+            // clean up format of benefits array to be more readable
+            dbJob.Benefits.forEach(benefit => {
+                benefits.push(benefit.dataValues)
+            })
+
             // render job page with job object
             res.render('jobdetails', {
                 job: job,
                 manager: manager,
-                company: company
+                company: company,
+                benefits: benefits
             })
         })
     });
