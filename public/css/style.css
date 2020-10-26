@@ -21,6 +21,9 @@
     background-color: #000c20;
     color:rgb(211, 211, 211);
     font-weight: bold;
+    bottom: 0;
+    overflow: auto;
+    width: 100%;
 }
 
 .delete {
@@ -30,6 +33,13 @@
 .navbar {
     background-color: #97d9d9;
     height: 80px;
+}
+
+.page-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 20px;
 }
 
 
@@ -66,39 +76,30 @@
     margin-top: 20px;
 }
 
-.editbutton {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-
 .modal-label {
     color: white;
-}
-
-.jobs-column {
-    flex-wrap: wrap;
-    max-width: 90%;
 }
 
 .companyForm {
     display: none;
 }
 
+/* User Profile Page Styling */
+
 .edit-profile {
     display: none;
+}
+
+.editbutton {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 .manager-welcome {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 15px;
-}
-
-.manager-title {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 25px;
 }
 
 .profile-category {
@@ -129,6 +130,20 @@
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
 }
+
+.jobs-column {
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+/* Manager Job Page Styling */
+
+.managerjob-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* use this for media breakpoints */
 
 @media only screen and (max-width: 768px) {
