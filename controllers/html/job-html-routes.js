@@ -230,18 +230,18 @@ module.exports = function (router) {
             const company = dbJob.Manager.Company
 
             // send json of job for front-end until page is created
-            res.json({
-                job: job,
-                manager: manager,
-                company: company
-            })
-
-            // TODO: change render to match file name when file is created
-            // res.render('jobpostedit', {
+            // res.json({
             //     job: job,
             //     manager: manager,
             //     company: company
             // })
+
+            // TODO: change render to match file name when file is created
+            res.render('jobpostedit', {
+                job: job,
+                manager: manager,
+                company: company
+            })
         }).catch(err => {
             // for any other errors send status code 422
             res.status(422).end();
