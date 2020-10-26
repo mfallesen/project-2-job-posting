@@ -212,7 +212,7 @@ module.exports = function (router) {
             // only allow access if the manager who posted the job is also logged in
             if (!req.session.manager || req.session.manager.id != dbJob.manager_id) {
                 // return redirect to landing page to stop running code
-                // return res.redirect('/')
+                return res.redirect('/')
             }
 
             // if id does not exist in jobs table, return status code 404
@@ -273,7 +273,7 @@ module.exports = function (router) {
             if (!dbJob) {
                 return res.status(404).send('No job found').end();
             }
-            
+
             // grab values from db job
             const { id, title, description, type, wage, Manager: managerObj } = dbJob
             const { id: manager_id, first_name, last_name, email, phone, Company } = managerObj
