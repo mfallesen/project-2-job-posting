@@ -50,9 +50,9 @@
             
         </div>
 
-        <div class= "user-profile">
+<div class= "user-profile">
 
-            <div class= "view-profile">
+<div class= "view-profile">
 <div class="columns">
         <div class= "card manager-profile column is-10 is-offset-1">
                 <div class="columns">
@@ -105,10 +105,14 @@
 
             <div class="column is-6">
 
-                <div class="bio">
-                    <h2><strong>About:</strong></h2>
+                <div class="bio profile-category">
+                    <p><strong>About:</strong></p>
 
-                    {{manager.bio}}
+                    <p>
+                        {{manager.bio}}
+                    </p>
+
+                    
                 </div>
             </div>
          </div>
@@ -125,9 +129,17 @@
     </div>
     
 
-            <div class= "edit-profile">
+<div class= "edit-profile">
+    <div class="columns">
+        <div class="card edit-profile column is-10 is-offset-1">
+            <div class= "column is-10 is-offset-1 page-title">
+                Edit Your Profile
+                <hr>
+            </div>
 
-                <div class="field is-horizontal">
+            <div class="columns">
+                <div class="column is-4 is-offset-1">
+                     <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Name</label>
                 </div>
@@ -152,7 +164,7 @@
                 </div>
             </div>
 
-             <div class="field is-horizontal">
+              <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">E-mail</label>
                 </div>
@@ -168,7 +180,7 @@
                 </div>
             </div>
 
-              <div class="field is-horizontal">
+               <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Phone</label>
                 </div>
@@ -187,25 +199,40 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="field">
-                <label class="label">Bio</label>
-                    <div class="control">
-                        <textarea class="textarea bioInput" placeholder="Write a bio about yourself or your company here">{{manager.bio}}</textarea>
+
+        <div class= "column is-6">
+
+            <div class="field is-horizontal">
+                <div class="field-label">
+                     <label class="label">Your Bio</label>
+                </div>
+                <div class= "field-body">
+                    <div class= "field is-expanded">
+                        <div class="control">
+                            <textarea class="textarea bioInput">{{manager.bio}}</textarea>
+                        </div>
+
                     </div>
                 </div>
-
-
-            <button class="button is-primary save-changes">Save Changes</button>
-
             </div>
 
+        </div>
+    </div>
 
+            <div class= "editbutton">
+                <button class="button is-primary save-changes">Save Changes</button>
+            </div>
+       
 
-           
-
-           
             
+
+            </div>
         </div>
     </div>
    
+
+        </div>
+    </div>
+

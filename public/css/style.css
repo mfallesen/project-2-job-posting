@@ -110,8 +110,9 @@
 
 .jobs-column {
     flex-wrap: wrap;
-    max-width: 90%;
-    padding-left: 80px;
+    max-width: 96%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 .companyForm {
@@ -153,7 +154,6 @@
 }
 
 .dropdown {
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -164,11 +164,6 @@
    display: -webkit-box;
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
-}
-
-.jobs-column {
-    flex-wrap: wrap;
-    max-width: 100%;
 }
 
 #contact-form {
@@ -182,7 +177,7 @@
 }
 
 
-/* JOb detail styling */
+/* Job detail styling */
 #job-detail-card {
     width: 50%;
     margin-left: auto;
@@ -192,7 +187,6 @@
 #job-detail-card p {
     padding-top: 10px;
 }
-
 
 
 #job-title {
@@ -214,14 +208,20 @@
 }
 #job-manager button {
     display: block;
-    width: 50%;
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .details-button {
     background-color: #97d9d9;
 }
+
+.form-subtitle {
+    margin-bottom:10px;
+}
+
 /* use this for media breakpoints */
 
 @media only screen and (max-width: 768px) {
@@ -230,6 +230,17 @@
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .edit-profile {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .page-title {
+        padding-bottom: 10px;
+    }
+
+
     #job-detail-card {
         width: 90%;
     }
