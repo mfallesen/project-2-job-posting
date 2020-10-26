@@ -23,7 +23,7 @@ function modifyJobArray(dbJobs) {
         if (job.type === 'ft') {
             jobInfo.type = 'Full Time'
         } else {
-            job.type = 'Part Time'
+            jobInfo.type = 'Part Time'
         }
         // add manager object to job obj
         jobInfo.manager = {
@@ -176,20 +176,43 @@ module.exports = function (router) {
 
     // route to render page to create a new job posting
     router.get('/job/create', function (req, res) {
-        const manager = req.session.manager
-        res.render('jobpost', manager)
+        // grab all benefits from db
+        db.Benefit.findAll({}).then(function(dbBenefits) {
+            const benefits = []
+            // modify benefits from db into a more readable format for front-end
+            dbBenefits.forEach(benefit => {
+                // put relevant data from benefit into obj
+                const benefitData = {
+                    id: benefit.dataValues.id,
+                    text: benefit.dataValues.benefit_text
+                }
+                // push obj to array of benefits
+                benefits.push(benefitData)
+            })
+            // get the manager's details from the session
+            const manager = req.session.manager
+            // render the page
+            res.render('jobpost', {
+                manager: manager,
+                benefits: benefits
+            })
+        })
     });
 
     // route to render page for updating an existing job posting
     router.get('/job/update/:id', function (req, res) {
         // grab job from database with id in url
         db.Job.findOne({
-            where: { id: req.params.id }
+            where: { id: req.params.id },
+            include: {
+                model: db.Manager,
+                include: db.Company
+            }
         }).then(function (dbJob) {
             // only allow access if the manager who posted the job is also logged in
             if (!req.session.manager || req.session.manager.id != dbJob.manager_id) {
                 // return redirect to landing page to stop running code
-                return res.redirect('/')
+                // return res.redirect('/')
             }
             
             // if id does not exist in jobs table, return status code 404
@@ -202,12 +225,23 @@ module.exports = function (router) {
 
             // create object to be used for rendering with values from job in db
             const job = { id, title, description, type, wage }
+            
+            const manager = dbJob.Manager
+            const company = dbJob.Manager.Company
 
             // send json of job for front-end until page is created
-            res.json(job)
+            res.json({
+                job: job,
+                manager: manager,
+                company: company
+            })
 
             // TODO: change render to match file name when file is created
-            // res.render('something')
+            // res.render('jobpostedit', {
+            //     job: job,
+            //     manager: manager,
+            //     company: company
+            // })
         }).catch(err => {
             // for any other errors send status code 422
             res.status(422).end();
