@@ -49,6 +49,32 @@ function modifyJobArray(dbJobs) {
 
 
 module.exports = function (router) {
+
+    // route to render page to create a new job posting
+    router.get('/job/create', function (req, res) {
+        // grab all benefits from db
+        db.Benefit.findAll({}).then(function (dbBenefits) {
+            const benefits = []
+            // modify benefits from db into a more readable format for front-end
+            dbBenefits.forEach(benefit => {
+                // put relevant data from benefit into obj
+                const benefitData = {
+                    id: benefit.dataValues.id,
+                    text: benefit.dataValues.benefit_text
+                }
+                // push obj to array of benefits
+                benefits.push(benefitData)
+            })
+            // get the manager's details from the session
+            const manager = req.session.manager
+            // render the page
+            res.render('jobpost', {
+                manager: manager,
+                benefits: benefits
+            })
+        })
+    });
+
     // route to return job listings with optional filter
     router.get('/job/listings/:filter?', function (req, res) {
         // define empty variables for assigning filters
@@ -172,31 +198,6 @@ module.exports = function (router) {
                 return res.status(422).end();
             })
         }
-    });
-
-    // route to render page to create a new job posting
-    router.get('/job/create', function (req, res) {
-        // grab all benefits from db
-        db.Benefit.findAll({}).then(function (dbBenefits) {
-            const benefits = []
-            // modify benefits from db into a more readable format for front-end
-            dbBenefits.forEach(benefit => {
-                // put relevant data from benefit into obj
-                const benefitData = {
-                    id: benefit.dataValues.id,
-                    text: benefit.dataValues.benefit_text
-                }
-                // push obj to array of benefits
-                benefits.push(benefitData)
-            })
-            // get the manager's details from the session
-            const manager = req.session.manager
-            // render the page
-            res.render('jobpost', {
-                manager: manager,
-                benefits: benefits
-            })
-        })
     });
 
     // route to render page for updating an existing job posting

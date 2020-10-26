@@ -170,12 +170,7 @@ $(document).ready(function () {
         }
     })
 
-<<<<<<< HEAD
-    $(".navbar-login").on("click", function () {
-        window.location.href = "/"
-=======
     $(".navbar-login").on("click", function() {
->>>>>>> development
         $("#login-modal").addClass("is-active")
     })
 
@@ -228,7 +223,7 @@ $(document).ready(function () {
             }
         }).done(function (response) {
             console.log('new job created')
-            window.location.href = "/manager/" + response.manager_id + "/jobs"
+            window.location.href= "/manager/jobs"
         })
     })
 
