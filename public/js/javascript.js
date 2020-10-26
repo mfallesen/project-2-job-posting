@@ -25,6 +25,10 @@ $(document).ready(function () {
         $(".modal").addClass("is-active");
     })
 
+    $(document).on("click", ".back-btn", function() {
+        location.href= "/job/listings";
+    })
+
 
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
@@ -167,7 +171,6 @@ $(document).ready(function () {
     })
 
     $(".navbar-login").on("click", function() {
-        window.location.href="/"
         $("#login-modal").addClass("is-active")
     })
 
