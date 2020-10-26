@@ -167,7 +167,6 @@ $(document).ready(function () {
     })
 
     $(".navbar-login").on("click", function() {
-        window.location.href="/"
         $("#login-modal").addClass("is-active")
     })
 
