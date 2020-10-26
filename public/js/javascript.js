@@ -25,6 +25,10 @@ $(document).ready(function () {
         $(".modal").addClass("is-active");
     })
 
+    $(document).on("click", ".back-btn", function() {
+        location.href= "/job/listings";
+    })
+
 
     $(".delete").on("click", function () {
         $(".modal").removeClass("is-active")
@@ -166,8 +170,12 @@ $(document).ready(function () {
         }
     })
 
+<<<<<<< HEAD
     $(".navbar-login").on("click", function () {
         window.location.href = "/"
+=======
+    $(".navbar-login").on("click", function() {
+>>>>>>> development
         $("#login-modal").addClass("is-active")
     })
 
@@ -185,8 +193,12 @@ $(document).ready(function () {
         const jobType = $('input[name="answer"]:checked').val()
         const jobPhone = $('.jobphoneInput').val()
         const jobWage = $('.jobwageInput').val()
-
-        console.log(jobType)
+        const benefits = []
+        // for each checked benefit, add if to the benefits array
+        $.each($('input[name="benefit"]:checked'), function() {
+            // push the value, which represents the benefit's index in the db
+            benefits.push($(this).val())
+        })
 
         if (
             !jobName ||
@@ -206,7 +218,8 @@ $(document).ready(function () {
                 title: jobName,
                 description: jobDescription,
                 type: jobType,
-                wage: jobWage
+                wage: jobWage,
+                benefits: benefits
             },
             statusCode: {
                 500: function () {

@@ -1,47 +1,49 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                    <img src="/images/Logo.png" width="112" height="28">
-                </a>
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <img src="/images/Logo.png" width="112" height="28">
+        </a>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+
+            <a class="navbar-item" href="/profile">
+                Profile
+            </a>
+
+            <a class="navbar-item" href="#">
+                Post a Job
+            </a>
+
+            <a class="navbar-item" href='/manager/{{id}}/jobs'>
+                View Your Listings
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                  Home
-                </a>
-          
-                <a class="navbar-item" href="/profile">
-                    Profile
-                </a>
-
-                <a class="navbar-item" href="#">
-                    Post a Job
-                </a>
-
-                <a class="navbar-item" href='/manager/{{id}}/jobs'>
-                    View Your Listings
-                </a>
-            </div>
 
         
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-primary" href="/logout">
                             <strong>Sign Out</strong>
                         </a>
                     </div>
                 </div>
             </div>
-    </nav>
+        </div>
+</nav>
 
 
 <section class="container">
@@ -62,7 +64,7 @@
         </div>
     </div>
 
-    
+
     <div class="field">
         <label class="label">Job Description:</label>
         <div class="control">
@@ -130,6 +132,12 @@
   </div>
 </div>
 
+        {{#each benefits}}
+        <label class="checkbox">
+            <input class='benefitCheck' name='benefit' type="checkbox" value='{{id}}'>
+            {{text}}
+        </label>
+        {{/each}}
 
  <div class="control">
         <button class="button is-primary is-medium job-submit">Submit</button>

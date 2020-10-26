@@ -45,6 +45,14 @@
 
             <p> <strong>Compensation:</strong> <span>{{job.wage}}</span></p>
         </div>
+
+        <p>Job Benefits</p>
+        <ul class='job-benefits'>
+            {{#each benefits}}
+            <li>{{benefit_text}}</li>
+            {{/each}}
+        </ul>
+
         <hr>
         <div id="job-manager">
             <h2><strong>Contact Information</strong></h2>
@@ -56,8 +64,11 @@
             <p><strong>E-mail:</strong> <span id="manager-email">{{manager.email}}</span></p>
 
             <p><strong>Phone:</strong> <span id="manager-phone">{{manager.phone}}</span></p>
-
-            <button class="button contact-manager">Contact Manager</button>
+            <div class="buttons">
+                 <button class="button details-button contact-manager">Contact Manager</button>
+                <button class="button details-button back-btn">Back to Job Listings</button>
+            </div>
+           
         </div>
     </div>
 
