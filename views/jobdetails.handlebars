@@ -45,6 +45,14 @@
 
             <p> <strong>Compensation:</strong> <span>{{job.wage}}</span></p>
         </div>
+
+        <p>Job Benefits</p>
+        <ul class='job-benefits'>
+            {{#each benefits}}
+            <li>{{benefit_text}}</li>
+            {{/each}}
+        </ul>
+
         <hr>
         <div id="job-manager">
             <h2><strong>Contact Information</strong></h2>

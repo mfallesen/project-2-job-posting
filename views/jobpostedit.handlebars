@@ -55,7 +55,7 @@
           <div class="field">
         <label class="label">Job Title:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input jobtitleInput" type="email" value = {{title}}>
+            <input class="input jobtitleInput" type="email" value='{{job.title}}'>
             <span class="icon is-small is-left">
                 <i class="fas fa-briefcase"></i>
             </span>
@@ -66,7 +66,7 @@
     <div class="field">
         <label class="label">Job Description:</label>
         <div class="control">
-            <textarea class="textarea jobdescriptionInput" value= {{description}}></textarea>
+            <textarea class="textarea jobdescriptionInput">{{job.description}}</textarea>
         </div>
     </div>
 
@@ -75,7 +75,7 @@
     <div class="field">
         <label class="label">Contact Phone:</label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input jobphoneInput" type="email" value={{company.phone}}>
+            <input class="input jobphoneInput" type="email" value='{{company.phone}}'>
             <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
             </span>
@@ -92,14 +92,27 @@
   <div class="field-body">
     <div class="field is-narrow">
       <div class="control">
+        {{!-- check if job is full or part time --}}
+        {{#if job.isFullTime}}
         <label class="radio">
-          <input type="radio" name="answer" value="ft">
+          <input type="radio" name="answer" value="ft" checked>
           Full-Time
         </label>
         <label class="radio">
           <input type="radio" name="answer" value="pt">
           Part-Time
         </label>
+        {{else}}
+        <label class="radio">
+          <input type="radio" name="answer" value="ft">
+          Full-Time
+        </label>
+        <label class="radio">
+          <input type="radio" name="answer" value="pt" checked>
+          Part-Time
+        </label>
+        {{/if}}
+
       </div>
       </div>
       </div>
@@ -117,7 +130,7 @@
             </div>
         <div class="field-body">
              <div class="control has-icons-left">
-            <input class="input jobwageInput" type="email" value={{wage}}>
+            <input class="input jobwageInput" type="email" value='{{job.wage}}'>
              <span class="icon is-small is-left">
                 <i class="fas fa-dollar-sign"></i>
             </span>
