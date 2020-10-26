@@ -108,15 +108,12 @@
     color: white;
 }
 
-<<<<<<< HEAD
 .jobs-column {
     flex-wrap: wrap;
     max-width: 90%;
     padding-left: 80px;
 }
 
-=======
->>>>>>> development
 .companyForm {
     display: none;
 }
