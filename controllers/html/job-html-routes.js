@@ -225,9 +225,18 @@ module.exports = function (router) {
 
             // create object to be used for rendering with values from job in db
             const job = { id, title, description, type, wage }
+            // if the job is full time
+            if (job.type === 'ft') {
+                // set isFullTime to true
+                job.isFullTime = true
+            } else {
+                // else set to false
+                job.isFullTime = false
+            }
+            console.log(job)
             
-            const manager = dbJob.Manager
-            const company = dbJob.Manager.Company
+            const manager = dbJob.Manager.dataValues
+            const company = manager.Company.dataValues
 
             // send json of job for front-end until page is created
             // res.json({
