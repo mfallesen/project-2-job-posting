@@ -166,6 +166,11 @@ $(document).ready(function () {
         }
     })
 
+    $(".navbar-login").on("click", function() {
+        window.location.href="/"
+        $("#login-modal").addClass("is-active")
+    })
+
     $("#contact-close").on("click", function () {
         $(".modal").removeClass("is-active")
     })
@@ -222,7 +227,7 @@ $(document).ready(function () {
 
     $(".job-edit").on("click", function () {
         jobId = $(this).attr("data-id");
-        window.location.href = "/job/update/" + jobId;
+        location.href = "/job/update/" + jobId;
 
     })
 
@@ -293,3 +298,4 @@ $(document).ready(function () {
         })
 
     })
+
