@@ -62,8 +62,10 @@ db.sequelize.sync({ force: false }).then(function () {
 app.post('/message', (req, res) => {
   transporter.sendMail(req.body, function (err, info) {
     if (err) {
+      res.status(422);
       console.log(err);
     } else {
+      res.status(200).end();
       console.log('message sent: ' + info.response);
     }
   })
