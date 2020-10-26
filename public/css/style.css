@@ -72,6 +72,12 @@
 .dropdown-content {
     background-color: rgb(211, 211, 211, 0.8);
 }
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 /* Indexpage styling */
 .hero {
     background-image: url('../images/hero.png');
@@ -100,6 +106,12 @@
 
 .modal-label {
     color: white;
+}
+
+.jobs-column {
+    flex-wrap: wrap;
+    max-width: 90%;
+    padding-left: 80px;
 }
 
 .companyForm {
@@ -137,6 +149,7 @@
 /* Job Listing Page Styling */
 #job-header {
     text-align: center;
+    font-size: 30px;
 }
 
 .dropdown {
@@ -202,6 +215,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+}
+.contact-manager {
+    background-color: #97d9d9;
 }
 /* use this for media breakpoints */
 
