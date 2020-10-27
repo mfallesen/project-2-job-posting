@@ -246,7 +246,6 @@ module.exports = function (router) {
             //     company: company
             // })
 
-            // TODO: change render to match file name when file is created
             res.render('jobpostedit', {
                 job: job,
                 manager: manager,
