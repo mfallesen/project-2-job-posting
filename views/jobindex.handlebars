@@ -18,15 +18,15 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             {{#if manager.isLoggedIn}}
-                            <a class="button is-light" href='/manager/{{manager.id}}'>
-                                My Profile
+                            <a class="button is-dark" href='/manager/{{manager.id}}'>
+                                <strong>Profile</strong>
                             </a>
-                            <a class="button is-light" href='/logout'>
-                                Logout
+                            <a class="button is-dark" href='/logout'>
+                                <strong>Log Out</strong>
                             </a>
                             {{else}}
-                            <a class="button is-light navbar-login">
-                                Log In
+                            <a class="button is-dark navbar-login">
+                                <strong>Log In</strong>
                             </a>
                             {{/if}}
                         </div>
@@ -41,10 +41,14 @@
 
     <div id="job-header">
         <div class="page-title">
-        Post a New Job
-    </div>
-        <p>These companies and organizations are currently looking for help</p>
+        View Job Listings
+        <hr>
+        </div>
 
+
+      <div class="subtitle">
+          These companies and organizations are currently looking for help:
+      </div>
         <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
                 <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">

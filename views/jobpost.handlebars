@@ -36,8 +36,8 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary" href="/logout">
-                            <strong>Sign Out</strong>
+                        <a class="button is-dark" href="/logout">
+                            <strong>Log Out</strong>
                         </a>
                     </div>
                 </div>
@@ -48,12 +48,14 @@
 
 <section class="container">
 
-    <div class="page-title">
+   
+  <div class= "columns">
+      <div class= "column is-10 is-offset-1 card">
+          <div class= "column is-10 is-offset-1">
+               <div class="page-title">
         Post a New Job
     </div>
 
-  <div class= "columns">
-      <div class= "column is-10 is-offset-1 card">
           <div class="field">
         <label class="label">Job Title:</label>
         <div class="control has-icons-left has-icons-right">
@@ -85,11 +87,11 @@
     </div>
 
 <div class= "columns">
-    <div class="column is-6">
+    <div class="column is-4">
     <div class="control">
      <div class="field is-horizontal">
   <div class="field-label">
-    <label class="label">Job Type:</label>
+    <label class="label">Type:</label>
   </div>
   <div class="field-body">
     <div class="field is-narrow">
@@ -111,15 +113,15 @@
     
 
  
-<div class= "column is-6">
+<div class= "column is-4">
       <div class="control">
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Job Wage:</label>
+            <div class="field-label">
+                <label class="label">Wage:</label>
             </div>
         <div class="field-body">
              <div class="control has-icons-left">
-            <input class="input jobwageInput" type="email" placeholder="Wage">
+            <input class="input jobwageInput" type="email" placeholder="Hourly wage">
              <span class="icon is-small is-left">
                 <i class="fas fa-dollar-sign"></i>
             </span>
@@ -130,14 +132,31 @@
       </div>
     </div>
   </div>
-</div>
 
-        {{#each benefits}}
+<div class="column is-4">
+  <div class= "control">
+    <div class="field is-horizontal">
+    <div class="field-label is-normal">
+        <label class="label">Benefits:</label>
+    </div>
+    <div class="field-body">
+     {{#each benefits}}
         <label class="checkbox">
             <input class='benefitCheck' name='benefit' type="checkbox" value='{{id}}'>
             {{text}}
         </label>
         {{/each}}
+    </div>
+     </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+       
 
  <div class="control">
         <button class="button is-primary is-medium job-submit">Submit</button>
@@ -152,7 +171,7 @@
 
    
 
-
+</div>
 
     </div>
 </div>
