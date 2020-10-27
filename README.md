@@ -23,7 +23,7 @@ When you open Next Step's homepage, you have three choices: view jobs, log in, o
 
 If you are a potential employee seeking jobs, you can click "View Jobs" to see the list of jobs that have been posted on Next Step. You can use the dropdown on top of the page to sort the jobs by post date, wage, or whether they're full-time or part-time positions. 
 
-![Next Step's job listings](./screenshots/joblistings.png)
+![Next Step's job listings](./screenshots/joblisting.png)
 
 ![Users can sort the jobs by post date, wage, full time, or part time](./screenshots/jobsort.png)
 
