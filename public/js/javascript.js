@@ -227,6 +227,44 @@ $(document).ready(function () {
         })
     })
 
+    $(".job-update").on("click", function () {
+        const jobName = $('.jobtitleInput').val()
+        const jobDescription = $('.jobdescriptionInput').val()
+        const jobType = $('input[name="answer"]:checked').val()
+        const jobPhone = $('.jobphoneInput').val()
+        const jobWage = $('.jobwageInput').val()
+
+        if (
+            !jobName ||
+            !jobDescription ||
+            !jobType ||
+            !jobPhone ||
+            !jobWage
+        ) {
+            // return to avoid running ajax request
+            return alert('all fields are required')
+        }
+
+        $.ajax({
+            url: '/api/job/update/' + $('.job-update').attr('data-jobid'),
+            method: "PUT",
+            data: {
+                title: jobName,
+                description: jobDescription,
+                type: jobType,
+                wage: jobWage,
+            },
+            statusCode: {
+                500: function () {
+                    alert("something weird happened")
+                }
+            }
+        }).done(function (response) {
+            console.log('new job created')
+            window.location.href= "/manager/jobs"
+        })
+    })
+
     $(".job-data").on("click", function () {
         jobId = $(this).attr("data-id");
         window.location.href = "/job/" + jobId;
