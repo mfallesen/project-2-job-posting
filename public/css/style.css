@@ -225,6 +225,16 @@
     margin-bottom:10px;
 }
 
+.checkbox {
+    padding-top: 3px;
+    padding-left: 5px;
+    padding-right: 15px;
+}
+
+.radio {
+    padding-top: 9px;
+}
+
 /* use this for media breakpoints */
 
 @media only screen and (max-width: 768px) {
