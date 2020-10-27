@@ -22,7 +22,7 @@ $(document).ready(function () {
     })
 
     $(document).on("click", ".contact-manager", function () {
-        $(".modal").addClass("is-active");
+        $("#contact-modal").addClass("is-active");
     })
 
     $(document).on("click", ".back-btn", function() {
