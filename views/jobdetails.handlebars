@@ -18,15 +18,15 @@
             <div class="navbar-item">
                         <div class="buttons">
                             {{#if manager.isLoggedIn}}
-                            <a class="button is-light" href='/manager/{{manager.id}}'>
-                                My Profile
+                            <a class="button is-dark" href='/manager/{{manager.id}}'>
+                                <strong>Profile</strong>
                             </a>
-                            <a class="button is-light" href='/logout'>
-                                Logout
+                            <a class="button is-dark" href='/logout'>
+                                <strong>Log Out</strong>
                             </a>
                             {{else}}
-                            <a class="button is-light navbar-login">
-                                Log In
+                            <a class="button is-dark navbar-login">
+                                <strong>Log In</strong>
                             </a>
                             {{/if}}
                         </div>
@@ -73,8 +73,8 @@
 
             <p><strong>Phone:</strong> <span id="manager-phone">{{manager.phone}}</span></p>
             <div class="buttons">
-                 <button class="button details-button contact-manager">Contact Manager</button>
-                <button class="button details-button back-btn">Back to Job Listings</button>
+                 <button class="button details-button is-link contact-manager">Contact Manager</button>
+                <button class="button details-button is-link back-btn">Back to Job Listings</button>
             </div>
            
         </div>

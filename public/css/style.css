@@ -12,18 +12,21 @@
 .button.is-primary {
     background-color: #97d9d9;
     color: #000c20;
+    font-weight:bold;
 }
 .button.is-primary:hover {
     background-color: #63a0b7;
+    color: white;
 }
 .button.is-link {
     background-color: #97d9d9;
     color: #000c20;
+    font-weight: bold;
 }
 
 .button.is-link:hover {
     background-color: #63a0b7;
-    color: #000c20;
+    color: white;
 }
 .button.is-link.is-light {
     
@@ -55,6 +58,7 @@
 .navbar {
     background-color: #97d9d9;
     height: 80px;
+    font-weight: bold;
 }
 
 .page-title {
@@ -153,6 +157,8 @@
     font-size: 30px;
 }
 
+
+
 .dropdown {
     margin-bottom: 20px;
 }
@@ -213,9 +219,6 @@
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-}
-.details-button {
-    background-color: #97d9d9;
 }
 
 .form-subtitle {
