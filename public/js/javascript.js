@@ -218,7 +218,8 @@ $(document).ready(function () {
             },
             statusCode: {
                 500: function () {
-                    alert("something weird happened")
+                    alert("Please log in")
+                    window.location.href = '/'
                 }
             }
         }).done(function (response) {

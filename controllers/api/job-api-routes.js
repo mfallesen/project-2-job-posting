@@ -3,6 +3,7 @@ const db = require('../../models')
 module.exports = function(router) {
     // route to create a new job posting
     router.post('/api/job/create', function(req, res) {
+        console.log('\n*** CREATING NEW JOB ***\n')
         // grab and store values from req.body
         const { title, description, type, wage, benefits } = req.body
 
@@ -17,11 +18,13 @@ module.exports = function(router) {
             wage: wage,
             manager_id: manager_id
         }).then(function(newJob) {            
-            // add each of the benefits to the db
-            benefits.forEach(benefit => {
-                newJob.addBenefit(benefit)
-            })
-
+            // add each of the benefits to the db if any benefits were selected
+            if (benefits) {
+                benefits.forEach(benefit => {
+                    newJob.addBenefit(benefit)
+                })
+            }
+            // send back new job json
            res.json(newJob)
         })
     });
